@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\WorkFieldsController;
+use App\Http\Controllers\API\SubWorkFieldsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('WorkFields', WorkFieldsController::class);
+Route::apiResource('SubWorkFields', SubWorkFieldsController::class);

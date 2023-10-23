@@ -2,20 +2,22 @@
 
 namespace App\Models;
 
+use App\Models\WorkField;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class WorkField extends Model
+class SubWorkField extends Model
 {
     use HasFactory;
     protected $fillable = [
         'name',
         'description',
+        'work_field',
         'status',
     ];
 
-    public function sub_work_field()
+    public function work_field()
     {
-        return $this->hasMany(SubWorkField::class,'work_field','id');
+        return $this->belongsTo(WorkField::class,'work_field','id');
     } 
 }

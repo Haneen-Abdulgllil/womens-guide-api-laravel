@@ -4,11 +4,12 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\WorkField;
-use App\Http\Requests\StoreWorkFieldsRequest;
-use App\Http\Requests\UpdateWorkFieldsRequest;
+use App\Models\SubWorkField;
+use App\Http\Requests\StoreSubWorkFieldsRequest;
+use App\Http\Requests\UpdateSubWorkFieldsRequest;
 
-class WorkFieldsController extends Controller
+
+class SubWorkFieldsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +19,9 @@ class WorkFieldsController extends Controller
     public function index()
     {
         //
-        try { 
-            $data = WorkField::all();
-            return response()->json($data);
+        try{
+            $jsonData = SubWorkField::all();
+            return response()->json( $jsonData);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'message.The operation failed, please try again',
@@ -45,19 +46,20 @@ class WorkFieldsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreWorkFieldsRequest $request)
+    public function store(StoreSubWorkFieldsRequest $request)
     {
         //
-        try { 
-            $new_workfield = new WorkField();
-            $new_workfield->name = $request->name;
-            $new_workfield->description = $request->description;
-            $new_workfield->status = $request->input('status') == true ? '1' : '-1';
-            $new_workfield->save();
+        try{
+            $new_subworkfield = new SubWorkField();
+            $new_subworkfield->name = $request->name;
+            $new_subworkfield->description = $request->description;
+            $new_subworkfield->work_field = $request->work_field;
+            $new_subworkfield->status = $request->input('status') == true ? '1' : '-1';
+            $new_subworkfield->save();
             // Return a response indicating the success and the created resource
             return response()->json([
-                'message' => 'message.Resource created successfully',
-                'data' => $new_workfield,
+                'message' => 'Resource created successfully',
+                'data' => $new_subworkfield,
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
@@ -76,9 +78,9 @@ class WorkFieldsController extends Controller
     public function show($id)
     {
         //
-        try { 
-            $item = WorkField::find($id);
-            return response()->json($item);
+        try{
+            $item = SubWorkField::find($id);
+            return response()->json( $item);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'message.The operation failed, please try again',
@@ -96,7 +98,6 @@ class WorkFieldsController extends Controller
     public function edit($id)
     {
         //
-
     }
 
     /**
@@ -106,19 +107,20 @@ class WorkFieldsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateWorkFieldsRequest $request, $id)
+    public function update(UpdateSubWorkFieldsRequest $request, $id)
     {
         //
         try{
-            $workfield =  WorkField::find($id);
-            $workfield->name = $request->name;
-            $workfield->description = $request->description;
-            $workfield->status = $request->input('status') == true ? '1' : '-1';
-            $workfield->save();
+            $new_subworkfield = SubWorkField::find($id);
+            $new_subworkfield->name = $request->name;
+            $new_subworkfield->description = $request->description;
+            $new_subworkfield->work_field = $request->work_field;
+            $new_subworkfield->status = $request->input('status') == true ? '1' : '-1';
+            $new_subworkfield->save();
             // Return a response indicating the success and the created resource
             return response()->json([
                 'message' => 'Resource updated successfully',
-                'data' => $workfield,
+                'data' => $new_subworkfield,
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
@@ -126,7 +128,6 @@ class WorkFieldsController extends Controller
                 'error' => $th->getMessage(),
             ], 500);
         }
-
     }
 
     /**
@@ -139,7 +140,7 @@ class WorkFieldsController extends Controller
     {
         //
         try{
-            $item = WorkField::find($id);
+            $item = SubWorkField::find($id);
             // if(!$item)
             // return back()->with(['message' => __(key:'Admin.Message.The operation failed, please try again'), 'type' => 'alert-danger']);
             $item->status *= -1;
