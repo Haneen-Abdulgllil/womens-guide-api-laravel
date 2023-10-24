@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\WorkFieldsController;
 use App\Http\Controllers\API\SubWorkFieldsController;
+use App\Http\Controllers\API\DepartmentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +21,4 @@ Route::get('/', function () {
 
 Route::resource('WorkFields', WorkFieldsController::class);
 Route::resource('SubWorkFields', SubWorkFieldsController::class);
+Route::resource('Departments', DepartmentController::class);
