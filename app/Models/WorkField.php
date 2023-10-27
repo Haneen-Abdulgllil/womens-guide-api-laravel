@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\SubWorkField;
+use App\Models\Office;
 
 class WorkField extends Model
 {
@@ -18,4 +20,9 @@ class WorkField extends Model
     {
         return $this->hasMany(SubWorkField::class,'work_field','id');
     } 
+
+    public function offices()
+    {
+        return $this->belongsToMany(Office::class, 'work_field_office')->withTimestamps();
+    }
 }

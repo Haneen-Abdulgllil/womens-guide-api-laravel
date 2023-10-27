@@ -18,6 +18,6 @@ class SubWorkField extends Model
 
     public function work_field()
     {
-        return $this->belongsTo(WorkField::class,'work_field','id');
-    } 
+        return $this->belongsTo(WorkField::class, 'work_field', 'id');
+    }
 }

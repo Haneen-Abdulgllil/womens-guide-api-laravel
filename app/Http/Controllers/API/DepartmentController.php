@@ -149,4 +149,18 @@ class DepartmentController extends Controller
             ], 500);
         }
     }
+
+    public function getDepartmentLicences($department_id){
+        try{
+            $department = Department::findOrFail($department_id);
+            $department_licences = $department->licences;
+
+            return response()->json($department_licences);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'message.The operation failed, please try again',
+                'error' => $th->getMessage(),
+            ], 500);
+        }
+    }
 }

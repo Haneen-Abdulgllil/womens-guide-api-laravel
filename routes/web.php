@@ -5,6 +5,8 @@ use App\Http\Controllers\API\WorkFieldsController;
 use App\Http\Controllers\API\SubWorkFieldsController;
 use App\Http\Controllers\API\DepartmentController;
 use App\Http\Controllers\API\OfficeController;
+use App\Http\Controllers\API\LicenceController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,3 +26,4 @@ Route::resource('WorkFields', WorkFieldsController::class);
 Route::resource('SubWorkFields', SubWorkFieldsController::class);
 Route::resource('Departments', DepartmentController::class);
 Route::resource('Offices', OfficeController::class);
+Route::resource('Licences', LicenceController::class);

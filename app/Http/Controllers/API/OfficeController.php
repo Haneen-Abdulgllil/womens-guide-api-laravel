@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Office;
 use App\Http\Traits\ImageUploadTraits;
+use App\Http\Requests\StoreOfficeRequest;
+use App\Http\Requests\UpdateOfficeRequest;
 
 class OfficeController extends Controller
 {
@@ -47,7 +49,7 @@ class OfficeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreOfficeRequest $request)
     {
         //
         try { 
@@ -118,7 +120,7 @@ class OfficeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateOfficeRequest $request, $id)
     {
         //
         try { 
@@ -168,6 +170,37 @@ class OfficeController extends Controller
             // return back()->with(['message' => __(key:'Admin.Message.The operation failed, please try again'), 'type' => 'alert-danger']);
             $item->status *= -1;
             if($item->save());
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'message.The operation failed, please try again',
+                'error' => $th->getMessage(),
+            ], 500);
+        }
+    }
+
+    public function getOfficeLicences($office_id)
+    {
+        try{
+            $office = Office::findOrFail($office_id);
+            $licences = $office->licences;
+
+            return response()->json($licences);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'message.The operation failed, please try again',
+                'error' => $th->getMessage(),
+            ], 500);
+        }
+    }
+
+
+    public function getOfficeWorkFields($office_id)
+    {
+        try{
+            $office = Office::findOrFail($office_id);
+            $workFields = $office->work_fields;
+
+            return response()->json($workFields);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'message.The operation failed, please try again',

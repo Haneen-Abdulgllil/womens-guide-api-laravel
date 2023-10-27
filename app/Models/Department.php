@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Licence;
 
 class Department extends Model
 {
@@ -13,5 +14,10 @@ class Department extends Model
         'description',
         'status',
     ];
+
+    public function licences()
+    {
+        return $this->hasMany(Licence::class, 'department','id');
+    }
 
 }

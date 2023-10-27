@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Licence;
 
 class Office extends Model
 {
@@ -23,4 +24,15 @@ class Office extends Model
         'phone_number',
         'status',
     ];
+
+    
+    public function licences()
+    {
+        return $this->belongsToMany(Licence::class ,'licence_office')->withTimestamps();
+    } 
+
+    public function work_fields()
+    {
+        return $this->belongsToMany(WorkField::class ,'work_field_office')->withTimestamps();
+    } 
 }

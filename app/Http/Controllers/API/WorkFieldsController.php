@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\WorkField;
 use App\Http\Requests\StoreWorkFieldsRequest;
 use App\Http\Requests\UpdateWorkFieldsRequest;
+use Illuminate\Support\Facades\DB;
 
 class WorkFieldsController extends Controller
 {
@@ -54,6 +55,14 @@ class WorkFieldsController extends Controller
             $new_workfield->description = $request->description;
             $new_workfield->status = $request->input('status') == true ? '1' : '-1';
             $new_workfield->save();
+            $new_workfield->offices()->syncwithoutDetaching($request->offices);
+            // foreach($request->offices as $key=>$id){
+            //     $offices_ids = [
+            //         'work_field_id'=>$new_workfield->id,
+            //         'office_id'=>$request->offices[$key],
+            //     ];
+            //     DB::table('work_field_office')->insert($offices_ids);
+            // }
             // Return a response indicating the success and the created resource
             return response()->json([
                 'message' => 'message.Resource created successfully',
@@ -115,6 +124,7 @@ class WorkFieldsController extends Controller
             $workfield->description = $request->description;
             $workfield->status = $request->input('status') == true ? '1' : '-1';
             $workfield->save();
+            $new_workfield->offices()->syncwithoutDetaching($request->offices);
             // Return a response indicating the success and the created resource
             return response()->json([
                 'message' => 'Resource updated successfully',
@@ -144,6 +154,40 @@ class WorkFieldsController extends Controller
             // return back()->with(['message' => __(key:'Admin.Message.The operation failed, please try again'), 'type' => 'alert-danger']);
             $item->status *= -1;
             if($item->save());
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'message.The operation failed, please try again',
+                'error' => $th->getMessage(),
+            ], 500);
+        }
+    }
+
+
+
+    public function getSubWorkFields($workFieldId)
+    {
+        try{
+            $workField = WorkField::findOrFail($workFieldId);
+            $subWorkFields = $workField->sub_work_field;
+
+            return response()->json($subWorkFields);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'message.The operation failed, please try again',
+                'error' => $th->getMessage(),
+            ], 500);
+        }
+    }
+
+    
+
+    public function getWorkFieldOffices($work_field_id)
+    {
+        try{
+            $workField = WorkField::findOrFail($work_field_id);
+            $offices = $workField->offices;
+
+            return response()->json($offices);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'message.The operation failed, please try again',

@@ -152,4 +152,26 @@ class SubWorkFieldsController extends Controller
             ], 500);
         }
     }
+
+    // public function getWorkFields($subWorkFieldId){
+    //     $subWorkField = SubWorkField::find($subWorkFieldId);
+    //     $workField = $subWorkField->work_field;
+    //     return response()->json( $workField,);
+
+    // }
+
+    public function getWorkFieldName($subWorkFieldId)
+        {
+            try{
+                $subWorkField = SubWorkField::find($subWorkFieldId);
+                $workFieldName = $subWorkField->work_field;
+
+                return response()->json(['workFieldName' => $workFieldName]);
+            } catch (\Throwable $th) {
+                return response()->json([
+                    'message' => 'message.The operation failed, please try again',
+                    'error' => $th->getMessage(),
+                ], 500);
+            }
+        }
 }
