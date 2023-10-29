@@ -25,8 +25,6 @@ return new class extends Migration
             $table->string('notes')->nullable();
             $table->foreignId('department');
             $table->foreign('department')->references('id')->on('departments')->onUpdate('cascade');
-            // $table->foreignId('offices_ids');
-            // $table->foreign('offices_ids')->references('id')->on('offices')->onUpdate('cascade');
             $table->boolean("status")->default(1);
             $table->timestamps();
         });
