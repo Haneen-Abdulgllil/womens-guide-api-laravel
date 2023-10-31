@@ -7,12 +7,16 @@ use App\Http\Controllers\API\SubWorkFieldsController;
 use App\Http\Controllers\API\DepartmentController;
 use App\Http\Controllers\API\OfficeController;
 use App\Http\Controllers\API\LicenceController;
+use App\Http\Controllers\API\CoursesController;
+use App\Http\Controllers\API\ConsultantsController;
 // APP
 use App\Http\Controllers\APPAPI\AppWorkFieldsController;
 use App\Http\Controllers\APPAPI\AppSubWorkFieldsController;
 use App\Http\Controllers\APPAPI\AppDepartmentsController;
 use App\Http\Controllers\APPAPI\AppOfficesController;
 use App\Http\Controllers\APPAPI\AppLicencesController;
+use App\Http\Controllers\APPAPI\AppCoursesController;
+use App\Http\Controllers\APPAPI\AppConsultantsController;
 
 
 /*
@@ -36,6 +40,8 @@ Route::resource('SubWorkFields', SubWorkFieldsController::class);
 Route::resource('Departments', DepartmentController::class);
 Route::resource('Offices', OfficeController::class);
 Route::resource('Licences', LicenceController::class);
+Route::resource('Courses', CoursesController::class);
+Route::resource('Consultants', ConsultantsController::class);
 
 
 // App 
@@ -45,3 +51,5 @@ Route::resource('AppSubWorkFields', AppSubWorkFieldsController::class);
 Route::resource('AppDepartments', AppDepartmentsController::class);
 Route::resource('AppOffices', AppOfficesController::class);
 Route::resource('AppLicences', AppLicencesController::class);
+Route::resource('AppCourses', AppCoursesController::class);
+Route::resource('AppConsultants', AppConsultantsController::class);
