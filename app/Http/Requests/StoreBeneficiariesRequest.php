@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreSubWorkFieldsRequest extends FormRequest
+class StoreBeneficiariesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class StoreSubWorkFieldsRequest extends FormRequest
         return [
             //
             'name'=>'required',
-            'description'=>'required',
+            'project_name'=>'required',
             'work_field'=>'required',
         ];
     }
@@ -34,7 +34,7 @@ class StoreSubWorkFieldsRequest extends FormRequest
     public function messages(){
         return [
             'name.required' =>   __('validation.required') ,
-            'description.required' =>   __('validation.required') ,
+            'project_name.required' =>   __('validation.required') ,
             'work_field.required' =>   __('validation.required') ,
         ];
     }

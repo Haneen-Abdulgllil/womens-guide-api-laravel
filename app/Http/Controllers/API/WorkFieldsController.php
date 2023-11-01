@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\WorkField;
+use App\Models\Work_Field_office;
 use App\Http\Requests\StoreWorkFieldsRequest;
 use App\Http\Requests\UpdateWorkFieldsRequest;
 use Illuminate\Support\Facades\DB;
@@ -188,6 +189,39 @@ class WorkFieldsController extends Controller
             $offices = $workField->offices;
 
             return response()->json($offices);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'message.The operation failed, please try again',
+                'error' => $th->getMessage(),
+            ], 500);
+        }
+    }
+
+    
+    public function deleteWorkFieldOffices($id)
+    {
+        try {
+            $office = Work_Field_office::findOrFail($id);
+            // dd($images);
+
+            Work_Field_office::find($id)->delete();
+            return response()->json( ['message' => 'message.The operation done successfully']);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'message.The operation failed, please try again',
+                'error' => $th->getMessage(),
+            ], 500);
+        }
+    }
+
+
+    public function getBeneficiaries($workFieldId)
+    {
+        try{
+            $workField = WorkField::findOrFail($workFieldId);
+            $beneficiaries = $workField->beneficiaries;
+
+            return response()->json($beneficiaries);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'message.The operation failed, please try again',

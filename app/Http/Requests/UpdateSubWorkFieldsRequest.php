@@ -27,7 +27,7 @@ class UpdateSubWorkFieldsRequest extends FormRequest
             //
             'name'=>'required',
             'description'=>'required',
-
+            'work_field'=>'required',
         ];
     }
 
@@ -35,6 +35,7 @@ class UpdateSubWorkFieldsRequest extends FormRequest
         return [
             'name.required' =>   __('validation.required') ,
             'description.required' =>   __('validation.required') ,
+            'work_field.required' =>   __('validation.required') ,
         ];
     }
 }

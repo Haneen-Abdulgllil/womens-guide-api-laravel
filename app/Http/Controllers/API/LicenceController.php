@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Licence;
+use App\Models\Licence_office;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreLicenceRequest;
 use App\Http\Requests\UpdateLicenceRequest;
@@ -215,6 +216,23 @@ class LicenceController extends Controller
             $DepartmentName = $Licence->department;
 
             return response()->json(['DepartmentName' => $DepartmentName]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'message.The operation failed, please try again',
+                'error' => $th->getMessage(),
+            ], 500);
+        }
+    }
+
+    
+    public function deleteLicenceOffices($id)
+    {
+        try {
+            $office = Licence_office::findOrFail($id);
+            // dd($images);
+
+            Licence_office::find($id)->delete();
+            return response()->json( ['message' => 'message.The operation done successfully']);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'message.The operation failed, please try again',
