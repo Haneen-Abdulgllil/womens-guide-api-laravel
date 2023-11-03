@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\APPAPI;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ContactUs;
+use App\Models\Setting;
 
-class ContactUsController extends Controller
+class AppSettingsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +17,8 @@ class ContactUsController extends Controller
     {
         //
         try { 
-            $data = ContactUs::all();
-            return response()->json($data);
+            $setting = Setting::first();;
+            return response()->json($setting);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => 'message.The operation failed, please try again',
@@ -57,15 +57,6 @@ class ContactUsController extends Controller
     public function show($id)
     {
         //
-        try { 
-            $item = ContactUs::find($id);
-            return response()->json($item);
-        } catch (\Throwable $th) {
-            return response()->json([
-                'message' => 'message.The operation failed, please try again',
-                'error' => $th->getMessage(),
-            ], 500);
-        }
     }
 
     /**

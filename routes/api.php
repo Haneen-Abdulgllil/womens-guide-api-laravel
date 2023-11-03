@@ -11,6 +11,8 @@ use App\Http\Controllers\API\LicenceController;
 use App\Http\Controllers\API\CoursesController;
 use App\Http\Controllers\API\ConsultantsController;
 use App\Http\Controllers\API\BeneficiariesController;
+use App\Http\Controllers\API\ContactUsController;
+use App\Http\Controllers\API\SettingsController;
 // APP
 use App\Http\Controllers\APPAPI\AppWorkFieldsController;
 use App\Http\Controllers\APPAPI\AppSubWorkFieldsController;
@@ -20,6 +22,8 @@ use App\Http\Controllers\APPAPI\AppLicencesController;
 use App\Http\Controllers\APPAPI\AppCoursesController;
 use App\Http\Controllers\APPAPI\AppConsultantsController;
 use App\Http\Controllers\APPAPI\AppBeneficiariesController;
+use App\Http\Controllers\APPAPI\AppContactUsController;
+use App\Http\Controllers\APPAPI\AppSettingsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -44,6 +48,8 @@ Route::apiResource('Licences', LicenceController::class);
 Route::apiResource('Courses', CoursesController::class);
 Route::apiResource('Consultants', ConsultantsController::class);
 Route::apiResource('Beneficiaries', BeneficiariesController::class);
+Route::apiResource('ContactUs', ContactUsController::class);
+Route::apiResource('Settings', SettingsController::class);
 
 
 Route::get('work-fields/{work_field_id}/sub-work-fields', [WorkFieldsController::class, 'getSubWorkFields']);
@@ -56,7 +62,7 @@ Route::get('license/{license_id}/department', [LicenceController::class ,'getLic
 Route::get('department/{department_id}/licences', [DepartmentController::class ,'getDepartmentLicences']);
 Route::delete('delete-licence-offices/{id}', [LicenceController::class ,'deleteLicenceOffices']);
 Route::delete('delete-workfield-offices/{id}', [WorkFieldsController::class ,'deleteWorkFieldOffices']);
-Route::get('work-fields/{work_field_id}/beneficiaries', [WorkFieldsController::class ,'getBeneficiaries']);
+Route::get('work-fields/{work_field_id}/beneficiaries', [WorkFieldsController::class ,'getWorkFieldBeneficiaries']);
 
 
 
@@ -69,6 +75,8 @@ Route::apiResource('AppLicences', AppLicencesController::class);
 Route::apiResource('AppCourses', AppCoursesController::class);
 Route::apiResource('AppConsultants', AppConsultantsController::class);
 Route::apiResource('AppBeneficiaries', AppBeneficiariesController::class);
+Route::apiResource('AppContactUs', AppContactUsController::class);
+Route::apiResource('AppSettings', AppSettingsController::class);
 
 
 Route::get('app-work-fields/{work_field_id}/sub-work-fields', [AppWorkFieldsController::class, 'getSubWorkFields']);

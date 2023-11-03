@@ -215,7 +215,7 @@ class WorkFieldsController extends Controller
     }
 
 
-    public function getBeneficiaries($workFieldId)
+    public function getWorkFieldBeneficiaries($workFieldId)
     {
         try{
             $workField = WorkField::findOrFail($workFieldId);

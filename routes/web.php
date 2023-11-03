@@ -10,6 +10,8 @@ use App\Http\Controllers\API\LicenceController;
 use App\Http\Controllers\API\CoursesController;
 use App\Http\Controllers\API\ConsultantsController;
 use App\Http\Controllers\API\BeneficiariesController;
+use App\Http\Controllers\API\ContactUsController;
+use App\Http\Controllers\API\SettingsController;
 
 // APP
 use App\Http\Controllers\APPAPI\AppWorkFieldsController;
@@ -20,7 +22,8 @@ use App\Http\Controllers\APPAPI\AppLicencesController;
 use App\Http\Controllers\APPAPI\AppCoursesController;
 use App\Http\Controllers\APPAPI\AppConsultantsController;
 use App\Http\Controllers\APPAPI\AppBeneficiariesController;
-
+use App\Http\Controllers\APPAPI\AppContactUsController;
+use App\Http\Controllers\APPAPI\AppSettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +49,8 @@ Route::resource('Licences', LicenceController::class);
 Route::resource('Courses', CoursesController::class);
 Route::resource('Consultants', ConsultantsController::class);
 Route::resource('Beneficiaries', BeneficiariesController::class);
+Route::resource('ContactUs', ContactUsController::class);
+Route::resource('Settings', SettingsController::class);
 
 // App 
 
@@ -57,3 +62,4 @@ Route::resource('AppLicences', AppLicencesController::class);
 Route::resource('AppCourses', AppCoursesController::class);
 Route::resource('AppConsultants', AppConsultantsController::class);
 Route::resource('AppBeneficiaries', AppBeneficiariesController::class);
+Route::resource('AppSettings', AppSettingsController::class);

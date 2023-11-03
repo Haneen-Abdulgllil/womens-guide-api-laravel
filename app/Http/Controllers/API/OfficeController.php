@@ -144,7 +144,7 @@ class OfficeController extends Controller
             $office->save();
             // Return a response indicating the success and the created resource
             return response()->json([
-                'message' => 'message.Resource created successfully',
+                'message' => 'message.Resource updated successfully',
                 'data' => $office,
             ], 201);
         } catch (\Throwable $th) {

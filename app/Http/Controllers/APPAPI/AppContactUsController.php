@@ -4,8 +4,10 @@ namespace App\Http\Controllers\APPAPI;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\ContactUs;
+use App\Http\Requests\StoreContactUsRequest;
 
-class ContactUsController extends Controller
+class AppContactUsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,9 +35,27 @@ class ContactUsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreContactUsRequest $request)
     {
         //
+        try { 
+            $new_message = new ContactUs();
+            $new_message->name = $request->name;
+            $new_message->message = $request->message;
+            $new_message->message = $request->message;
+            $new_message->save();
+            // Return a response indicating the success and the created resource
+            return response()->json([
+                'message' => 'message.message sent successfully',
+                'data' => $new_message,
+            ], 201);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => 'message.The operation failed, please try again',
+                'error' => $th->getMessage(),
+            ], 500);
+        }
+
     }
 
     /**

@@ -13,7 +13,7 @@ class StoreContactUsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,16 @@ class StoreContactUsRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'emailorphone' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if (!filter_var($value, FILTER_VALIDATE_EMAIL) && !preg_match('/^\+?[0-9]{1,4}?[-. ]?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/', $value)) {
+                        // $fail('Please enter a valid email or phone number.');
+                        $fail('الرجاء ادخال بريد الكتروني او رقم هاتف صحيح!.');
+                    }
+                },
+                
+            ],
         ];
     }
 }
