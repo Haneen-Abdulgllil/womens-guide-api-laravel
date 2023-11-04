@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('licences', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
-            $table->string('required_documents');
-            $table->string('procedures');
+            $table->text('description');
+            $table->text('required_documents');
+            $table->text('procedures');
             $table->string('issuing_authority');
-            $table->string('fees');
-            $table->string('penalties');
+            $table->text('fees');
+            $table->text('penalties');
             $table->string('notes')->nullable();
             $table->foreignId('department');
             $table->foreign('department')->references('id')->on('departments')->onUpdate('cascade');

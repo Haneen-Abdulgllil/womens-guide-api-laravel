@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('offices', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->text('description');
             $table->string('address');
             $table->string('google_map')->nullable();
-            $table->string('required_actions');
+            $table->text('required_actions');
             $table->string('notes')->nullable();
             $table->string('website_url');
             $table->string('logo')->default('default_logo.webp');
