@@ -27,7 +27,9 @@ class SettingSeeder extends Seeder
             'funder_description' => 'Trust, Collaboration, Breakthhroughs',
             'implementing_entity_name' =>'جمعية الطموح لرعاية وتأهيل الصم',
             'implementing_entity_logo' =>'altamuh.jpg',
-            'implementing_entity_description' =>'جمعية الطموح لرعاية وتأهيل الصم',
+            'implementing_entity_description' =>'الرؤية:جمعية رائدة في خدمة ذوي الاعاقة السمعية و دمجهم في المجتمع وان يكونوا قادرين على المساهمه والاندماج وتقديم الخدمات للمجتمع 
+            الرساله:
+            تقديم خدمات وبرامج متميزة وبكفاءة عالية تسهم في تحقيق التنمية الشاملة للمجتمع خصوصاً لذوي الاعاقة السمعية بطريقة تضمن المشاركة المجتمعية',
             'email' =>'womensguide@gmail.com',
             'whatsapp_number' =>'777777777',
             'phone_number' =>'777777777',
