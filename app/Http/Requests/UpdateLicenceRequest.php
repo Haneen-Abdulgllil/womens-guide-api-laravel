@@ -34,8 +34,8 @@ class UpdateLicenceRequest extends FormRequest
             'penalties'=>'required',
             'notes'=>'required',
             'department'=>'required',
-            'offices'=>'required',
-            'status'=>'required',
+            // 'offices'=>'required',
+            // 'status'=>'required',
 
         ];
     }
@@ -51,8 +51,8 @@ class UpdateLicenceRequest extends FormRequest
             'penalties.required' =>   __('validation.required') ,
             'notes.required' =>   __('validation.required') ,
             'department.required' =>   __('validation.required') ,
-            'offices.required' =>   __('validation.required') ,
-            'status.required' =>   __('validation.required') ,
+            // 'offices.required' =>   __('validation.required') ,
+            // 'status.required' =>   __('validation.required') ,
 
         ];
     }

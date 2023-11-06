@@ -125,7 +125,7 @@ class WorkFieldsController extends Controller
             $workfield->description = $request->description;
             $workfield->status = $request->input('status') == true ? '1' : '-1';
             $workfield->save();
-            $new_workfield->offices()->syncwithoutDetaching($request->offices);
+            $workfield->offices()->syncwithoutDetaching($request->offices);
             // Return a response indicating the success and the created resource
             return response()->json([
                 'message' => 'Resource updated successfully',
