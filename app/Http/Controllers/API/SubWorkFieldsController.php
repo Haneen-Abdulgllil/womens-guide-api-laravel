@@ -24,7 +24,7 @@ class SubWorkFieldsController extends Controller
             return response()->json( $jsonData);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -58,12 +58,12 @@ class SubWorkFieldsController extends Controller
             $new_subworkfield->save();
             // Return a response indicating the success and the created resource
             return response()->json([
-                'message' => 'Resource created successfully',
+                'message' => __('message.Resource created successfully'),
                 'data' => $new_subworkfield,
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -83,7 +83,7 @@ class SubWorkFieldsController extends Controller
             return response()->json( $item);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -119,12 +119,12 @@ class SubWorkFieldsController extends Controller
             $new_subworkfield->save();
             // Return a response indicating the success and the created resource
             return response()->json([
-                'message' => 'Resource updated successfully',
+                'message' => __('message.Resource updated successfully'),
                 'data' => $new_subworkfield,
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -147,7 +147,7 @@ class SubWorkFieldsController extends Controller
             if($item->save());
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -169,7 +169,7 @@ class SubWorkFieldsController extends Controller
                 return response()->json(['workFieldName' => $workFieldName]);
             } catch (\Throwable $th) {
                 return response()->json([
-                    'message' => 'message.The operation failed, please try again',
+                    'message' =>  __('message.The operation failed, please try again'),
                     'error' => $th->getMessage(),
                 ], 500);
             }

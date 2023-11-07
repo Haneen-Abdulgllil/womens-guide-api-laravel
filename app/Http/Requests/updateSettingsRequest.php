@@ -26,15 +26,22 @@ class updateSettingsRequest extends FormRequest
         return [
             //
             'project_name'=>'required',
-            'project_logo'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'project_logo'=>'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'about_application'=>'required',
             'application_service'=>'required',
+            // 
             'funder_name'=>'required',
-            'funder_logo'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'funder_logo'=>'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'funder_description'=>'required',
+            // 
             'implementing_entity_name'=>'required',
-            'implementing_entity_logo'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'implementing_entity_logo'=>'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'implementing_entity_description'=>'required',
+            // 
+            'coordinating_entity_name'=>'required',
+            'coordinating_entity_logo'=>'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'coordinating_entity_description'=>'required',
+            // 
             'email'=>'nullable|email',
             'whatsapp_number' => 'nullable|regex:/^[1-9][0-9]+/|digits:9|starts_with:77,73,71,70',
             'phone_number' => 'required|regex:/^[1-9][0-9]+/|digits:9|starts_with:77,73,71,70',
@@ -45,24 +52,38 @@ class updateSettingsRequest extends FormRequest
     public function messages(){
         return [
             'project_name.required' =>   __('validation.required') ,
-            'project_logo.required' =>   __('validation.required') ,
+            // 'project_logo.required' =>   __('validation.required') ,
             'project_logo.image' =>   __('validation.image') ,
             'project_logo.mimes' =>   __('validation.mimes') ,
             'project_logo.max' =>   __('validation.max') ,
             'about_application.required' =>   __('validation.required') ,
             'application_service.required' =>   __('validation.required') ,
+            // 
+
             'funder_name.required' =>   __('validation.required') ,
-            'funder_logo.required' =>   __('validation.required') ,
+            // 'funder_logo.required' =>   __('validation.required') ,
             'funder_logo.image' =>   __('validation.image') ,
             'funder_logo.mimes' =>   __('validation.mimes') ,
             'funder_logo.max' =>   __('validation.max') ,
             'funder_description.required' =>   __('validation.required') ,
+            // 
+
             'implementing_entity_name.required' =>   __('validation.required') ,
-            'implementing_entity_logo.required' =>   __('validation.required') ,
+            // 'implementing_entity_logo.required' =>   __('validation.required') ,
             'implementing_entity_logo.image' =>   __('validation.image') ,
             'implementing_entity_logo.mimes' =>   __('validation.mimes') ,
             'implementing_entity_logo.max' =>   __('validation.max') ,
             'implementing_entity_description.required' =>   __('validation.required') ,
+            // 
+
+            'coordinating_entity_name.required' =>   __('validation.required') ,
+            // 'coordinating_entity_logo.required' =>   __('validation.required') ,
+            'coordinating_entity_logo.image' =>   __('validation.image') ,
+            'coordinating_entity_logo.mimes' =>   __('validation.mimes') ,
+            'coordinating_entity_logo.max' =>   __('validation.max') ,
+            'coordinating_entity_description.required' =>   __('validation.required') ,
+            // 
+
             'email.nullable' =>   __('validation.nullable') ,
             'email.email' =>   __('validation.email') ,
             'whatsapp_number.nullable' =>   __('validation.nullable') ,

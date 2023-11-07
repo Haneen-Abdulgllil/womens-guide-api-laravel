@@ -21,7 +21,7 @@ class AppOfficesController extends Controller
             return response()->json($data);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' => __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -62,7 +62,7 @@ class AppOfficesController extends Controller
             return response()->json($item);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' => __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -111,7 +111,7 @@ class AppOfficesController extends Controller
             return response()->json($licences);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' => __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -127,7 +127,7 @@ class AppOfficesController extends Controller
             return response()->json($workFields);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }

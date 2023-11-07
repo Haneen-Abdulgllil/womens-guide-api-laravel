@@ -21,7 +21,7 @@ class AppSettingsController extends Controller
             return response()->json($setting);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }

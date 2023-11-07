@@ -34,5 +34,10 @@ class Office extends Model
     public function work_fields()
     {
         return $this->belongsToMany(WorkField::class ,'work_field_office')->withTimestamps();
+    }
+    
+    public function departments()
+    {
+        return $this->belongsToMany(Department::class);
     } 
 }

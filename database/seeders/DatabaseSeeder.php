@@ -23,9 +23,9 @@ class DatabaseSeeder extends Seeder
 
 
         $this->call([
+            OfficeSeeder::class,
             SettingSeeder::class,
             DepartmentSeeder::class,
-            OfficeSeeder::class,
             LicenceSeeder::class,
             LicenceOfficesSeeder::class,
             WorkFieldsSeeder::class,

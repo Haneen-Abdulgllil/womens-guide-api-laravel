@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Licence;
+use App\Models\Office;
 
 class Department extends Model
 {
@@ -12,6 +13,7 @@ class Department extends Model
     protected $fillable = [
         'name',
         'description',
+        'office_id',
         'status',
     ];
 
@@ -19,5 +21,8 @@ class Department extends Model
     {
         return $this->hasMany(Licence::class, 'department','id');
     }
-
+    public function office()
+    {
+        return $this->belongsTo(Office::class, 'office_id','id');
+    }
 }

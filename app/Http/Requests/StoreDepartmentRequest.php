@@ -27,6 +27,7 @@ class StoreDepartmentRequest extends FormRequest
             //
             'name'=>'required',
             'description'=>'required',
+            'office_id'=>'required',
 
         ];
     }
@@ -35,6 +36,8 @@ class StoreDepartmentRequest extends FormRequest
         return [
             'name.required' =>   __('validation.required') ,
             'description.required' =>   __('validation.required') ,
+            'office_id.required' =>   __('validation.required') ,
+            // 'office_id.required' =>  'هذا الحقل مطلوب.' ,
         ];
     }
 }

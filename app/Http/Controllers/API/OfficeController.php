@@ -27,7 +27,7 @@ class OfficeController extends Controller
             return response()->json($data);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -71,12 +71,12 @@ class OfficeController extends Controller
             $new_office->save();
             // Return a response indicating the success and the created resource
             return response()->json([
-                'message' => 'message.Resource created successfully',
+                'message' =>  __('message.Resource created successfully'),
                 'data' => $new_office,
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -96,7 +96,7 @@ class OfficeController extends Controller
             return response()->json($item);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' => __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -124,7 +124,7 @@ class OfficeController extends Controller
     {
         //
         try { 
-            $logo = $this->uploadImage($request->logo, $this->dir);
+            $logo_update = $this->uploadImage($request->logo, $this->dir);
             $office = Office::find($id);
             $office->name = $request->name;
             $office->description = $request->description;
@@ -134,7 +134,7 @@ class OfficeController extends Controller
             $office->notes = $request->notes;
             $office->website_url = $request->website_url;
             if ($request->hasFile('logo')) {
-                $office->logo = $logo;
+                $office->logo = $logo_update;
             }
             $office->facebook_account = $request->facebook_account;
             $office->linkedin_account = $request->linkedin_account;
@@ -144,12 +144,12 @@ class OfficeController extends Controller
             $office->save();
             // Return a response indicating the success and the created resource
             return response()->json([
-                'message' => 'message.Resource updated successfully',
+                'message' => __('message.Resource updated successfully'),
                 'data' => $office,
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -172,7 +172,7 @@ class OfficeController extends Controller
             if($item->save());
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -187,7 +187,7 @@ class OfficeController extends Controller
             return response()->json($licences);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -203,7 +203,7 @@ class OfficeController extends Controller
             return response()->json($workFields);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }

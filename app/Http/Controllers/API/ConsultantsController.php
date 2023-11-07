@@ -23,7 +23,7 @@ class ConsultantsController extends Controller
             return response()->json($data);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -60,12 +60,12 @@ class ConsultantsController extends Controller
             $new_consultant->save();
             // Return a response indicating the success and the created resource
             return response()->json([
-                'message' => 'message.Resource created successfully',
+                'message' =>  __('message.Resource created successfully'),
                 'data' => $new_consultant,
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -85,7 +85,7 @@ class ConsultantsController extends Controller
             return response()->json($item);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -124,12 +124,12 @@ class ConsultantsController extends Controller
             $consultant->save();
             // Return a response indicating the success and the created resource
             return response()->json([
-                'message' => 'message.Resource update successfully',
+                'message' =>  __('message.Resource update successfully'),
                 'data' => $consultant,
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -152,7 +152,7 @@ class ConsultantsController extends Controller
             if($item->save());
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }

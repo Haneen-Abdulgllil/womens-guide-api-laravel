@@ -19,6 +19,7 @@ class DepartmentSeeder extends Seeder
         DB::table('departments')->insert([
             'name' =>'الإدارة العامة للمنشآت الطبية',
             'description' =>'الحصول على تصريح مزاولة المهن الطبية والمنشات',
+            'office_id'=>'1',
             'status' => 1,
             'created_at' => now(),
             'updated_at' => now(),
@@ -27,6 +28,7 @@ class DepartmentSeeder extends Seeder
         DB::table('departments')->insert([
             'name' =>'الإدارة العامة للمنشآت الطبية',
             'description' =>'الحصول على تصريح مزاولة المهن الطبية والمنشات',
+            'office_id'=>'2',
             'status' => 1,
             'created_at' => now(),
             'updated_at' => now(),
@@ -35,6 +37,7 @@ class DepartmentSeeder extends Seeder
         DB::table('departments')->insert([
             'name' =>'الإدارة العامة للمنشآت الطبية',
             'description' =>'الحصول على تصريح مزاولة المهن الطبية والمنشات',
+            'office_id'=>'3',
             'status' => 1,
             'created_at' => now(),
             'updated_at' => now(),
@@ -43,6 +46,7 @@ class DepartmentSeeder extends Seeder
         DB::table('departments')->insert([
             'name' =>'الإدارة العامة للمنشآت الطبية',
             'description' =>'الحصول على تصريح مزاولة المهن الطبية والمنشات',
+            'office_id'=>'2',
             'status' => 1,
             'created_at' => now(),
             'updated_at' => now(),
@@ -51,6 +55,7 @@ class DepartmentSeeder extends Seeder
         DB::table('departments')->insert([
             'name' =>'الإدارة العامة للمنشآت الطبية',
             'description' =>'الحصول على تصريح مزاولة المهن الطبية والمنشات',
+            'office_id'=>'1',
             'status' => 1,
             'created_at' => now(),
             'updated_at' => now(),

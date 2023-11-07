@@ -23,7 +23,7 @@ class DepartmentController extends Controller
             return response()->json($data);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -52,16 +52,17 @@ class DepartmentController extends Controller
             $new_department = new Department();
             $new_department->name = $request->name;
             $new_department->description = $request->description;
+            $new_department->office_id = $request->office_id;
             $new_department->status = $request->input('status') == true ? '1' : '-1';
             $new_department->save();
             // Return a response indicating the success and the created resource
             return response()->json([
-                'message' => 'message.Resource created successfully',
+                'message' =>  __('message.Resource created successfully'),
                 'data' => $new_department,
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -81,7 +82,7 @@ class DepartmentController extends Controller
             return response()->json($item);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -112,16 +113,17 @@ class DepartmentController extends Controller
             $department = Department::find($id);
             $department->name = $request->name;
             $department->description = $request->description;
+            $new_department->office_id = $request->office_id;
             $department->status = $request->input('status') == true ? '1' : '-1';
             $department->save();
             // Return a response indicating the success and the created resource
             return response()->json([
-                'message' => 'message.Resource updated successfully',
+                'message' =>  __('message.Resource updated successfully'),
                 'data' => $department,
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -144,7 +146,7 @@ class DepartmentController extends Controller
             if($item->save());
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -158,7 +160,7 @@ class DepartmentController extends Controller
             return response()->json($department_licences);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }

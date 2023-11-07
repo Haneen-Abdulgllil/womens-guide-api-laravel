@@ -91,6 +91,7 @@ class SettingsController extends Controller
             $ProjectLogo = $this->uploadImage($request->project_logo, $this->dir);
             $FunderLogo = $this->uploadImage($request->funder_logo, $this->dir);
             $ImplementingEntityLogo = $this->uploadImage($request->implementing_entity_logo, $this->dir);
+            $coordinatingEntityLogo = $this->uploadImage($request->coordinating_entity_logo, $this->dir);
             // 
             $setting = Setting::find($id);
             $setting->project_name = $request->project_name;
@@ -106,18 +107,22 @@ class SettingsController extends Controller
             $setting->implementing_entity_logo = $ImplementingEntityLogo;
             $setting->implementing_entity_description = $request->implementing_entity_description;
             // 
+            $setting->coordinating_entity_name = $request->coordinating_entity_name;
+            $setting->coordinating_entity_logo = $coordinatingEntityLogo;
+            $setting->coordinating_entity_description = $request->coordinating_entity_description;
+            // 
             $setting->email = $request->email;
             $setting->whatsapp_number = $request->whatsapp_number;
             $setting->phone_number = $request->phone_number;
             $setting->save();
             // Return a response indicating the success and the created resource
             return response()->json([
-                'message' => 'message.Resource updated successfully',
+                'message' =>  __('message.Resource updated successfully'),
                 'data' => $setting,
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => 'message.The operation failed, please try again',
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
