@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             BeneficiarySeeder::class,
             CoursesSeeder::class,
             consultantsSeeder::class,
+            FunderResourcesSeeder::class,
         ]);
     }
 }
