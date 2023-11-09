@@ -27,9 +27,10 @@ class UpdateLicenceRequest extends FormRequest
             //
             'name'=>'required',
             'description'=>'required',
+            'importance'=>'required',
             'required_documents'=>'required',
             'procedures'=>'required',
-            'issuing_authority'=>'required',
+            // 'issuing_authority'=>'required',
             'fees'=>'required',
             'penalties'=>'required',
             'notes'=>'required',
@@ -44,9 +45,10 @@ class UpdateLicenceRequest extends FormRequest
         return [
             'name.required' =>   __('validation.required') ,
             'description.required' =>   __('validation.required') ,
+            'importance.required' =>   __('validation.required') ,
             'required_documents.required' =>   __('validation.required') ,
             'procedures.required' =>   __('validation.required') ,
-            'issuing_authority.required' =>   __('validation.required') ,
+            // 'issuing_authority.required' =>   __('validation.required') ,
             'fees.required' =>   __('validation.required') ,
             'penalties.required' =>   __('validation.required') ,
             'notes.required' =>   __('validation.required') ,

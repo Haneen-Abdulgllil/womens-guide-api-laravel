@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('required_documents');
             $table->text('procedures');
-            $table->string('issuing_authority');
+            // $table->string('issuing_authority');
             $table->text('fees');
             $table->text('penalties');
             $table->string('notes')->nullable();

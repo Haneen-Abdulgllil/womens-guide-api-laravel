@@ -13,9 +13,10 @@ class Licence extends Model
     protected $fillable = [
         'name',
         'description',
+        'importance',
         'required_documents',
         'procedures',
-        'issuing_authority',
+        // 'issuing_authority',
         'fees',
         'penalties',
         'notes',

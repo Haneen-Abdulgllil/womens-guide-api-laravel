@@ -113,7 +113,7 @@ class DepartmentController extends Controller
             $department = Department::find($id);
             $department->name = $request->name;
             $department->description = $request->description;
-            $new_department->office_id = $request->office_id;
+            $department->office_id = $request->office_id;
             $department->status = $request->input('status') == true ? '1' : '-1';
             $department->save();
             // Return a response indicating the success and the created resource
@@ -140,10 +140,14 @@ class DepartmentController extends Controller
         //
         try{
             $item = Department::find($id);
-            // if(!$item)
-            // return back()->with(['message' => __(key:'Admin.Message.The operation failed, please try again'), 'type' => 'alert-danger']);
+            if(!$item)
+                return response()->json(['message' =>  __('message.The operation failed, please try again'),], 201);
             $item->status *= -1;
-            if($item->save());
+            if($item->save())
+            if ($item->status == -1)
+                return response()->json(['message' =>  __('message.The item has been disabled successfully'),], 201);
+            else 
+                return response()->json(['message' =>  __('message.The item has been successfully activated'),], 201);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' =>  __('message.The operation failed, please try again'),

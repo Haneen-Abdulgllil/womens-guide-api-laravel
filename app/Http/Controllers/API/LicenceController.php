@@ -55,9 +55,10 @@ class LicenceController extends Controller
             $new_licence = new Licence();
             $new_licence->name = $request->name;
             $new_licence->description = $request->description;
+            $new_licence->importance = $request->importance;
             $new_licence->required_documents = $request->required_documents;
             $new_licence->procedures = $request->procedures;
-            $new_licence->issuing_authority = $request->issuing_authority;
+            // $new_licence->issuing_authority = $request->issuing_authority;
             $new_licence->fees = $request->fees;
             $new_licence->penalties = $request->penalties;
             $new_licence->notes = $request->notes;
@@ -134,10 +135,11 @@ class LicenceController extends Controller
         try { 
             $licence = Licence::find($id);
             $licence->name = $request->name;
-            $licence->description = $request->description;
+            $licence->description = $request->description;   
+            $licence->importance = $request->importance;
             $licence->required_documents = $request->required_documents;
             $licence->procedures = $request->procedures;
-            $licence->issuing_authority = $request->issuing_authority;
+            // $licence->issuing_authority = $request->issuing_authority;
             $licence->fees = $request->fees;
             $licence->penalties = $request->penalties;
             $licence->notes = $request->notes;
@@ -181,10 +183,14 @@ class LicenceController extends Controller
         //
         try{
             $item = Licence::find($id);
-            // if(!$item)
-            // return back()->with(['message' => __(key:'Admin.Message.The operation failed, please try again'), 'type' => 'alert-danger']);
+            if(!$item)
+                return response()->json(['message' =>  __('message.The operation failed, please try again'),], 201);
             $item->status *= -1;
-            if($item->save());
+            if($item->save())
+            if ($item->status == -1)
+                return response()->json(['message' =>  __('message.The item has been disabled successfully'),], 201);
+            else 
+                return response()->json(['message' =>  __('message.The item has been successfully activated'),], 201);
         } catch (\Throwable $th) {
             return response()->json([
                 'message' =>  __('message.The operation failed, please try again'),

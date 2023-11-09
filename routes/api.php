@@ -63,6 +63,14 @@ Route::get('department/{department_id}/licences', [DepartmentController::class ,
 Route::delete('delete-licence-offices/{id}', [LicenceController::class ,'deleteLicenceOffices']);
 Route::delete('delete-workfield-offices/{id}', [WorkFieldsController::class ,'deleteWorkFieldOffices']);
 Route::get('work-fields/{work_field_id}/beneficiaries', [WorkFieldsController::class ,'getWorkFieldBeneficiaries']);
+// change status api
+Route::post('CourseChangeStatus/{id}', [CoursesController::class, 'destroy']);
+Route::post('ConsultantChangeStatus/{id}', [ConsultantsController::class, 'destroy']);
+Route::post('DepartmentChangeStatus/{id}', [DepartmentController::class, 'destroy']);
+Route::post('LicenceChangeStatus/{id}', [LicenceController::class, 'destroy']);
+Route::post('OfficeChangeStatus/{id}', [OfficeController::class, 'destroy']);
+Route::post('SubWorkFieldChangeStatus/{id}', [SubWorkFieldsController::class, 'destroy']);
+Route::post('WorkFieldChangeStatus/{id}', [WorkFieldsController::class, 'destroy']);
 
 
 
