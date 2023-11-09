@@ -203,10 +203,14 @@ class LicenceController extends Controller
     public function getLicenseOffices($Licence_id)
     {
         try{
-            $Licence = Licence::findOrFail($Licence_id);
-            $offices = $Licence->offices;
+            // $Licence = Licence::findOrFail($Licence_id);
+            // $offices = $Licence->offices();
 
+            // return response()->json($offices);
+
+            $offices = Licence_office::where('licence_id', $Licence_id)->get();
             return response()->json($offices);
+            
         } catch (\Throwable $th) {
             return response()->json([
                 'message' =>  __('message.The operation failed, please try again'),

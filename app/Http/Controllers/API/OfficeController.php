@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Office;
+use App\Models\Licence_office;
+use App\Models\Work_Field_office;
 use App\Http\Traits\ImageUploadTraits;
 use App\Http\Requests\StoreOfficeRequest;
 use App\Http\Requests\UpdateOfficeRequest;
@@ -185,10 +187,14 @@ class OfficeController extends Controller
     public function getOfficeLicences($office_id)
     {
         try{
-            $office = Office::findOrFail($office_id);
-            $licences = $office->licences;
+            // $office = Office::findOrFail($office_id);
+            // $licences = $office->licences;
 
+            // return response()->json($licences);
+
+            $licences = Licence_office::where('office_id', $office_id)->get();
             return response()->json($licences);
+
         } catch (\Throwable $th) {
             return response()->json([
                 'message' =>  __('message.The operation failed, please try again'),
@@ -201,10 +207,14 @@ class OfficeController extends Controller
     public function getOfficeWorkFields($office_id)
     {
         try{
-            $office = Office::findOrFail($office_id);
-            $workFields = $office->work_fields;
+            // $office = Office::findOrFail($office_id);
+            // $workFields = $office->work_fields;
 
-            return response()->json($workFields);
+            // return response()->json($workFields);
+
+            $WorkFields = Work_Field_office::where('office_id', $office_id)->get();
+            return response()->json($WorkFields);
+
         } catch (\Throwable $th) {
             return response()->json([
                 'message' =>  __('message.The operation failed, please try again'),

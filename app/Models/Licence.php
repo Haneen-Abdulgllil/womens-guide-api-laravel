@@ -27,7 +27,7 @@ class Licence extends Model
 
     public function offices()
     {
-        return $this->belongsToMany(Office::class, 'licence_office')->withTimestamps();
+        return $this->belongsToMany(Office::class, 'licence_office')->withPivot('id')->withTimestamps();
     }
     public function department()
     {
