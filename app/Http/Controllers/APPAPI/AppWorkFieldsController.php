@@ -118,14 +118,18 @@ class AppWorkFieldsController extends Controller
     }
 
     
-
+    
     public function getWorkFieldOffices($work_field_id)
     {
         try{
-            $workField = WorkField::findOrFail($work_field_id);
-            $offices = $workField->offices;
+            // $workField = WorkField::findOrFail($work_field_id);
+            // $offices = $workField->offices;
 
-            return response()->json($offices);
+            // return response()->json($offices);
+
+            $Offices = Work_Field_office::where('work_field_id', $work_field_id)->get();
+            return response()->json($Offices);
+
         } catch (\Throwable $th) {
             return response()->json([
                 'message' =>  __('message.The operation failed, please try again'),

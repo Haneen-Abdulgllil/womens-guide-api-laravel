@@ -102,16 +102,21 @@ class AppOfficesController extends Controller
         //
     }
 
+
     public function getOfficeLicences($office_id)
     {
         try{
-            $office = Office::findOrFail($office_id);
-            $licences = $office->licences;
+            // $office = Office::findOrFail($office_id);
+            // $licences = $office->licences;
 
+            // return response()->json($licences);
+
+            $licences = Licence_office::where('office_id', $office_id)->get();
             return response()->json($licences);
+
         } catch (\Throwable $th) {
             return response()->json([
-                'message' => __('message.The operation failed, please try again'),
+                'message' =>  __('message.The operation failed, please try again'),
                 'error' => $th->getMessage(),
             ], 500);
         }
@@ -121,10 +126,14 @@ class AppOfficesController extends Controller
     public function getOfficeWorkFields($office_id)
     {
         try{
-            $office = Office::findOrFail($office_id);
-            $workFields = $office->work_fields;
+            // $office = Office::findOrFail($office_id);
+            // $workFields = $office->work_fields;
 
-            return response()->json($workFields);
+            // return response()->json($workFields);
+
+            $WorkFields = Work_Field_office::where('office_id', $office_id)->get();
+            return response()->json($WorkFields);
+
         } catch (\Throwable $th) {
             return response()->json([
                 'message' =>  __('message.The operation failed, please try again'),
