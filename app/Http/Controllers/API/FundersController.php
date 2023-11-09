@@ -4,11 +4,11 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\FunderResource;
-use App\Http\Requests\updateFunderResourceRequest;
-use App\Http\Requests\StoreFunderResourceRequest;
+use App\Models\Funder;
+use App\Http\Requests\UpdateFundersRequest;
+use App\Http\Requests\StoreFundersRequest;
 
-class FunderResourcesController extends Controller
+class FundersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class FunderResourcesController extends Controller
     {
         //
         try { 
-            $data = FunderResource::all();
+            $data = Funder::all();
             return response()->json($data);
         } catch (\Throwable $th) {
             return response()->json([
@@ -45,19 +45,30 @@ class FunderResourcesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFunderResourceRequest $request)
+    public function store(StoreFundersRequest $request)
     {
         //
         try { 
-            $new_funder_resource = new FunderResource();
-            $new_funder_resource->name = $request->name;
-            $new_funder_resource->description = $request->description;
-            $new_funder_resource->status = $request->input('status') == true ? '1' : '-1';
-            $new_funder_resource->save();
+            $new_funder = new Funder();
+            $new_funder->name = $request->name;
+            $new_funder->description = $request->description;
+            $new_funder->our_products = $request->our_products;
+            $new_funder->funding_conditions = $request->funding_conditions;
+            $new_funder->required_documents = $request->required_documents;
+            $new_funder->our_features = $request->our_features;
+            $new_funder->guarantees = $request->guarantees;
+            $new_funder->financing_ceilings = $request->financing_ceilings;
+            $new_funder->facebook_account = $request->facebook_account;
+            $new_funder->linkedin_account = $request->linkedin_account;
+            $new_funder->email = $request->email;
+            $new_funder->phone_number = $request->phone_number;
+            $new_funder->funder_resource_id = $request->funder_resource_id;
+            $new_funder->status = $request->input('status') == true ? '1' : '-1';
+            $new_funder->save();
             // Return a response indicating the success and the created resource
             return response()->json([
                 'message' =>  __('message.Resource created successfully'),
-                'data' => $new_funder_resource,
+                'data' => $new_funder,
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
@@ -77,7 +88,7 @@ class FunderResourcesController extends Controller
     {
         //
         try { 
-            $item = FunderResource::find($id);
+            $item = Funder::find($id);
             return response()->json($item);
         } catch (\Throwable $th) {
             return response()->json([
@@ -105,19 +116,30 @@ class FunderResourcesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(updateFunderResourceRequest $request, $id)
+    public function update(UpdateFundersRequest $request, $id)
     {
         //
         try { 
-            $funder_resource =  FunderResource::find($id);
-            $funder_resource->name = $request->name;
-            $funder_resource->description = $request->description;
-            $funder_resource->status = $request->input('status') == true ? '1' : '-1';
-            $funder_resource->save();
+            $funder = Funder::find($id);
+            $funder->name = $request->name;
+            $funder->description = $request->description;
+            $funder->our_products = $request->our_products;
+            $funder->funding_conditions = $request->funding_conditions;
+            $funder->required_documents = $request->required_documents;
+            $funder->our_features = $request->our_features;
+            $funder->guarantees = $request->guarantees;
+            $funder->financing_ceilings = $request->financing_ceilings;
+            $funder->facebook_account = $request->facebook_account;
+            $funder->linkedin_account = $request->linkedin_account;
+            $funder->email = $request->email;
+            $funder->phone_number = $request->phone_number;
+            $funder->funder_resource_id = $request->funder_resource_id;
+            $funder->status = $request->input('status') == true ? '1' : '-1';
+            $funder->save();
             // Return a response indicating the success and the created resource
             return response()->json([
                 'message' =>  __('message.Resource updated successfully'),
-                'data' => $funder_resource,
+                'data' => $funder,
             ], 201);
         } catch (\Throwable $th) {
             return response()->json([
@@ -137,7 +159,7 @@ class FunderResourcesController extends Controller
     {
         //
         try{
-            $item = FunderResource::find($id);
+            $item = Funder::find($id);
             if(!$item)
                 return response()->json(['message' =>  __('message.The operation failed, please try again'),], 201);
             $item->status *= -1;
@@ -153,22 +175,4 @@ class FunderResourcesController extends Controller
             ], 500);
         }
     }
-
-
-
-    public function getFunders($funderResourceId)
-    {
-        try{
-            $funderResource = FunderResource::findOrFail($funderResourceId);
-            $Funders = $funderResource->funders;
-            return response()->json($Funders);
-
-        } catch (\Throwable $th) {
-            return response()->json([
-                'message' =>  __('message.The operation failed, please try again'),
-                'error' => $th->getMessage(),
-            ], 500);
-        }
-    }
-
 }

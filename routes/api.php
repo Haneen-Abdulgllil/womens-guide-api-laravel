@@ -14,6 +14,7 @@ use App\Http\Controllers\API\BeneficiariesController;
 use App\Http\Controllers\API\ContactUsController;
 use App\Http\Controllers\API\SettingsController;
 use App\Http\Controllers\API\FunderResourcesController;
+use App\Http\Controllers\API\FundersController;
 
 // APP
 use App\Http\Controllers\APPAPI\AppWorkFieldsController;
@@ -27,6 +28,7 @@ use App\Http\Controllers\APPAPI\AppBeneficiariesController;
 use App\Http\Controllers\APPAPI\AppContactUsController;
 use App\Http\Controllers\APPAPI\AppSettingsController;
 use App\Http\Controllers\APPAPI\AppFunderResourceController;
+use App\Http\Controllers\APPAPI\AppFundersController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -54,6 +56,7 @@ Route::apiResource('Beneficiaries', BeneficiariesController::class);
 Route::apiResource('ContactUs', ContactUsController::class);
 Route::apiResource('Settings', SettingsController::class);
 Route::apiResource('FunderResources', FunderResourcesController::class);
+Route::apiResource('Funders', FundersController::class);
 
 
 Route::get('work-fields/{work_field_id}/sub-work-fields', [WorkFieldsController::class, 'getSubWorkFields']);
@@ -67,6 +70,8 @@ Route::get('department/{department_id}/licences', [DepartmentController::class ,
 Route::delete('delete-licence-offices/{id}', [LicenceController::class ,'deleteLicenceOffices']);
 Route::delete('delete-workfield-offices/{id}', [WorkFieldsController::class ,'deleteWorkFieldOffices']);
 Route::get('work-fields/{work_field_id}/beneficiaries', [WorkFieldsController::class ,'getWorkFieldBeneficiaries']);
+Route::get('funder-resource/{funder_resource_id}/funders', [FunderResourcesController::class ,'getFunders']);
+
 // change status api
 Route::post('CourseChangeStatus/{id}', [CoursesController::class, 'destroy']);
 Route::post('ConsultantChangeStatus/{id}', [ConsultantsController::class, 'destroy']);
@@ -90,6 +95,7 @@ Route::apiResource('AppBeneficiaries', AppBeneficiariesController::class);
 Route::apiResource('AppContactUs', AppContactUsController::class);
 Route::apiResource('AppSettings', AppSettingsController::class);
 Route::apiResource('AppFunderResources', AppFunderResourceController::class);
+Route::apiResource('AppFunders', AppFundersController::class);
 
 
 Route::get('app-work-fields/{work_field_id}/sub-work-fields', [AppWorkFieldsController::class, 'getSubWorkFields']);
@@ -100,4 +106,5 @@ Route::get('app-offices/{office_id}/work-fields',  [AppOfficesController::class 
 Route::get('app-licences/{licence_id}/offices', [AppLicencesController::class ,'getLicenseOffices']);
 Route::get('app-license/{license_id}/department', [AppLicencesController::class ,'getLicenseDepartment']);
 Route::get('app-department/{department_id}/licences', [AppDepartmentsController::class ,'getDepartmentLicences']);
+Route::get('app-funder-resource/{funder_resource_id}/funders', [AppFundersController::class ,'getFunders']);
 

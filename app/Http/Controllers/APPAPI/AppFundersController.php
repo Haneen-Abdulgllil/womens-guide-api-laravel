@@ -4,9 +4,9 @@ namespace App\Http\Controllers\APPAPI;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\FunderResource;
+use App\Models\Funder;
 
-class AppFunderResourceController extends Controller
+class AppFundersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class AppFunderResourceController extends Controller
     {
         //
         try { 
-            $data = FunderResource::all();
+            $data = Funder::all();
             return response()->json($data);
         } catch (\Throwable $th) {
             return response()->json([
@@ -58,7 +58,7 @@ class AppFunderResourceController extends Controller
     {
         //
         try { 
-            $item = FunderResource::find($id);
+            $item = Funder::find($id);
             return response()->json($item);
         } catch (\Throwable $th) {
             return response()->json([
@@ -100,20 +100,5 @@ class AppFunderResourceController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function getFunders($funderResourceId)
-    {
-        try{
-            $funderResource = FunderResource::findOrFail($funderResourceId);
-            $Funders = $funderResource->funders;
-            return response()->json($Funders);
-
-        } catch (\Throwable $th) {
-            return response()->json([
-                'message' =>  __('message.The operation failed, please try again'),
-                'error' => $th->getMessage(),
-            ], 500);
-        }
     }
 }

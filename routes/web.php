@@ -13,6 +13,7 @@ use App\Http\Controllers\API\BeneficiariesController;
 use App\Http\Controllers\API\ContactUsController;
 use App\Http\Controllers\API\SettingsController;
 use App\Http\Controllers\API\FunderResourcesController;
+use App\Http\Controllers\API\FundersController;
 
 // APP
 use App\Http\Controllers\APPAPI\AppWorkFieldsController;
@@ -54,6 +55,7 @@ Route::resource('Beneficiaries', BeneficiariesController::class);
 Route::resource('ContactUs', ContactUsController::class);
 Route::resource('Settings', SettingsController::class);
 Route::resource('FunderResources', FunderResourcesController::class);
+Route::resource('Funder', FundersController::class);
 
 // App 
 

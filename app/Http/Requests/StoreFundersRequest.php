@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreConsultantRequest extends FormRequest
+class StoreFundersRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -47,10 +47,6 @@ class StoreConsultantRequest extends FormRequest
             'facebook_account.url' =>   __('validation.url') ,
             'linkedin_account.url' =>   __('validation.url') ,
             'email.email' =>   __('validation.email') ,
-            // 
-            'phone_number.required' =>   __('validation.required') ,
-            'phone_number.digits'        =>__('validation.digits'),
-            'phone_number.starts_with'   =>__('validation.starts_with'),
         ];
     }
 }
