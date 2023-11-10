@@ -17,6 +17,6 @@ class FunderResource extends Model
 
     public function funders()
     {
-        return $this->belongsToMany(Funder::class);
+        return $this->hasMany(Funder::class);
     }
 }

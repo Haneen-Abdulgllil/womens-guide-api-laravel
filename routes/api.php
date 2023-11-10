@@ -45,11 +45,11 @@ Route::middleware('auth:sanctum')->get('/admin', function (Request $request) {
     return $request->user();
 });
 // Admin
-Route::apiResource('WorkFields', WorkFieldsController::class);
-Route::apiResource('SubWorkFields', SubWorkFieldsController::class);
-Route::apiResource('Departments', DepartmentController::class);
-Route::apiResource('Offices', OfficeController::class);
-Route::apiResource('Licences', LicenceController::class);
+Route::apiResource('WorkFields', WorkFieldsController::class);//
+Route::apiResource('SubWorkFields', SubWorkFieldsController::class);//
+Route::apiResource('Departments', DepartmentController::class);//
+Route::apiResource('Offices', OfficeController::class);//
+Route::apiResource('Licences', LicenceController::class);//
 Route::apiResource('Courses', CoursesController::class);
 Route::apiResource('Consultants', ConsultantsController::class);
 Route::apiResource('Beneficiaries', BeneficiariesController::class);
@@ -106,5 +106,5 @@ Route::get('app-offices/{office_id}/work-fields',  [AppOfficesController::class 
 Route::get('app-licences/{licence_id}/offices', [AppLicencesController::class ,'getLicenseOffices']);
 Route::get('app-license/{license_id}/department', [AppLicencesController::class ,'getLicenseDepartment']);
 Route::get('app-department/{department_id}/licences', [AppDepartmentsController::class ,'getDepartmentLicences']);
-Route::get('app-funder-resource/{funder_resource_id}/funders', [AppFundersController::class ,'getFunders']);
+Route::get('app-funder-resource/{funder_resource_id}/funders', [AppFunderResourceController::class ,'getFunders']);
 

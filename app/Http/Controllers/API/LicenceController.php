@@ -160,7 +160,7 @@ class LicenceController extends Controller
 
             // Return a response indicating the success and the created resource
             return response()->json([
-                'message' =>  __('message.Resource created successfully'),
+                'message' =>  __('message.Resource updated successfully'),
                 'data' => $licence,
             ], 201);
         } catch (\Throwable $th) {
@@ -242,6 +242,7 @@ class LicenceController extends Controller
             // dd($images);
 
             Licence_office::find($id)->delete();
+            
             return response()->json( ['message' =>  __('message.The operation done successfully')]);
         } catch (\Throwable $th) {
             return response()->json([

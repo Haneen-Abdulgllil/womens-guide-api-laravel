@@ -27,6 +27,7 @@ class StoreWorkFieldsRequest extends FormRequest
             //
             'name'=>'required',
             'description'=>'required',
+            'offices'=>'required',
 
         ];
     }
@@ -35,6 +36,7 @@ class StoreWorkFieldsRequest extends FormRequest
         return [
             'name.required' =>   __('validation.required') ,
             'description.required' =>   __('validation.required') ,
+            'offices.required' =>   __('validation.required') ,
         ];
     }
 }
