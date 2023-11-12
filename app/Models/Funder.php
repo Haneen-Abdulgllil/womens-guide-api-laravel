@@ -12,6 +12,7 @@ class Funder extends Model
     protected $fillable = [
         'name',
         'description',
+        'logo',
         'our_products',
         'funding_conditions',
         'required_documents',

@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 use App\Models\Funder;
 use App\Http\Requests\UpdateFundersRequest;
 use App\Http\Requests\StoreFundersRequest;
+use App\Http\Traits\ImageUploadTraits;
 
 class FundersController extends Controller
 {
+
+    use ImageUploadTraits;
+    private $dir = 'funder';
+    private $inputImage = 'logo';
     /**
      * Display a listing of the resource.
      *
@@ -49,9 +54,11 @@ class FundersController extends Controller
     {
         //
         try { 
+            $logo = $this->uploadImage($request->logo, $this->dir);
             $new_funder = new Funder();
             $new_funder->name = $request->name;
             $new_funder->description = $request->description;
+            $new_funder->logo = $logo;
             $new_funder->our_products = $request->our_products;
             $new_funder->funding_conditions = $request->funding_conditions;
             $new_funder->required_documents = $request->required_documents;
@@ -120,9 +127,13 @@ class FundersController extends Controller
     {
         //
         try { 
+            $logo = $this->uploadImage($request->logo, $this->dir);
             $funder = Funder::find($id);
             $funder->name = $request->name;
             $funder->description = $request->description;
+            if ($request->hasFile('logo')) {
+                $new_funder->logo = $logo;
+            }
             $funder->our_products = $request->our_products;
             $funder->funding_conditions = $request->funding_conditions;
             $funder->required_documents = $request->required_documents;

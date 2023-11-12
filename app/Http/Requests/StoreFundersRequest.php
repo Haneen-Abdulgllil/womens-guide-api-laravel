@@ -27,6 +27,7 @@ class StoreFundersRequest extends FormRequest
             //
             'name'=>'required',
             'description'=>'required',
+            'logo'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'facebook_account'=>'nullable|url',
             'linkedin_account'=>'nullable|url',
             'email'=>'nullable|email',
@@ -39,6 +40,12 @@ class StoreFundersRequest extends FormRequest
         return [
             'name.required' =>   __('validation.required') ,
             'description.required' =>   __('validation.required') ,
+            // 
+            // 
+            'logo.required' =>   __('validation.required') ,
+            'logo.image' =>   __('validation.image') ,
+            'logo.mimes' =>   __('validation.mimes') ,
+            'logo.max' =>   __('validation.max') ,
             // 
             'facebook_account.nullable' =>   __('validation.nullable') ,
             'linkedin_account.nullable' =>   __('validation.nullable') ,

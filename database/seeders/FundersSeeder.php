@@ -19,6 +19,7 @@ class FundersSeeder extends Seeder
         DB::table('funders')->insert([
             'name' =>'بنك التضامن  ',
             'description' =>'البنك الاول في اليمن لتقديم القروض لاصحاب المشاريع الصغيرة والمتوسطة',
+            'logo' =>'yemen_logo.png',
             'our_products'=>'ثمار مشروعي , ثمار سكني , ثمار طموحي',
             'funding_conditions'=>'ان يكون يمني الجنسية, ان لا يقل عمر العميل عن 18 عاما , توفير الضمانات المطلوبة , ',
             'required_documents'=>'بطاقة شخصية  , اثبات ملكية المشروع ',
@@ -38,6 +39,7 @@ class FundersSeeder extends Seeder
         DB::table('funders')->insert([
             'name' =>'بنك التضامن  ',
             'description' =>'البنك الاول في اليمن لتقديم القروض لاصحاب المشاريع الصغيرة والمتوسطة',
+            'logo' =>'yemen_logo.png',
             'our_products'=>'ثمار مشروعي , ثمار سكني , ثمار طموحي',
             'funding_conditions'=>'ان يكون يمني الجنسية, ان لا يقل عمر العميل عن 18 عاما , توفير الضمانات المطلوبة , ',
             'required_documents'=>'بطاقة شخصية  , اثبات ملكية المشروع ',
@@ -57,6 +59,7 @@ class FundersSeeder extends Seeder
         DB::table('funders')->insert([
             'name' =>'بنك التضامن  ',
             'description' =>'البنك الاول في اليمن لتقديم القروض لاصحاب المشاريع الصغيرة والمتوسطة',
+            'logo' =>'yemen_logo.png',
             'our_products'=>'ثمار مشروعي , ثمار سكني , ثمار طموحي',
             'funding_conditions'=>'ان يكون يمني الجنسية, ان لا يقل عمر العميل عن 18 عاما , توفير الضمانات المطلوبة , ',
             'required_documents'=>'بطاقة شخصية  , اثبات ملكية المشروع ',
@@ -76,6 +79,7 @@ class FundersSeeder extends Seeder
         DB::table('funders')->insert([
             'name' =>'بنك التضامن  ',
             'description' =>'البنك الاول في اليمن لتقديم القروض لاصحاب المشاريع الصغيرة والمتوسطة',
+            'logo' =>'yemen_logo.png',
             'our_products'=>'ثمار مشروعي , ثمار سكني , ثمار طموحي',
             'funding_conditions'=>'ان يكون يمني الجنسية, ان لا يقل عمر العميل عن 18 عاما , توفير الضمانات المطلوبة , ',
             'required_documents'=>'بطاقة شخصية  , اثبات ملكية المشروع ',
@@ -95,6 +99,7 @@ class FundersSeeder extends Seeder
         DB::table('funders')->insert([
             'name' =>'بنك التضامن  ',
             'description' =>'البنك الاول في اليمن لتقديم القروض لاصحاب المشاريع الصغيرة والمتوسطة',
+            'logo' =>'yemen_logo.png',
             'our_products'=>'ثمار مشروعي , ثمار سكني , ثمار طموحي',
             'funding_conditions'=>'ان يكون يمني الجنسية, ان لا يقل عمر العميل عن 18 عاما , توفير الضمانات المطلوبة , ',
             'required_documents'=>'بطاقة شخصية  , اثبات ملكية المشروع ',
