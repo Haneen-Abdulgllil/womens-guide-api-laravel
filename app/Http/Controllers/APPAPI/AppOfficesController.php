@@ -143,4 +143,25 @@ class AppOfficesController extends Controller
             ], 500);
         }
     }
+
+
+    public function getOfficedepartments($office_id)
+    {
+        try{
+            // $office = Office::findOrFail($office_id);
+            // $workFields = $office->work_fields;
+
+            // return response()->json($workFields);
+
+            $office =  Office::findOrFail($office_id);
+            $departments = $office->departments;
+            return response()->json($departments);
+
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' =>  __('message.The operation failed, please try again'),
+                'error' => $th->getMessage(),
+            ], 500);
+        }
+    }
 }

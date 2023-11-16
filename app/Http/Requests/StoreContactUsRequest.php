@@ -24,18 +24,9 @@ class StoreContactUsRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'emailorphone' => [
-            //     'required',
-            //     function ($attribute, $value, $fail) {
-            //         if (!filter_var($value, FILTER_VALIDATE_EMAIL) && !preg_match('/^\+?[0-9]{1,4}?[-. ]?\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/', $value)) {
-            //             // $fail('Please enter a valid email or phone number.');
-            //             $fail('الرجاء ادخال بريد الكتروني او رقم هاتف صحيح!.');
-            //         }
-            //     },
-                
-            // ],
+      
             'name'=>'required',
-            'emailorphone'=>'required|email|regex:/^[1-9][0-9]+/|digits:9|starts_with:77,73,71,70',
+            // 'emailorphone'=>'required|email|regex:/^[1-9][0-9]+/|digits:9|starts_with:77,73,71,70',
             'message'=>'required',
         ];
     }

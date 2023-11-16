@@ -64,6 +64,15 @@ class SettingsController extends Controller
     public function show($id)
     {
         //
+        try { 
+            $item = Setting::find($id);
+            return response()->json($item);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => __('message.The operation failed, please try again'),
+                'error' => $th->getMessage(),
+            ], 500);
+        }
     }
 
     /**

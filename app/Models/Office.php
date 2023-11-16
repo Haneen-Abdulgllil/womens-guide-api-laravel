@@ -38,6 +38,6 @@ class Office extends Model
     
     public function departments()
     {
-        return $this->belongsToMany(Department::class);
+        return $this->hasMany(Department::class);
     } 
 }

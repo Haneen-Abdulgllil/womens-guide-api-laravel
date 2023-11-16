@@ -71,6 +71,7 @@ Route::delete('delete-licence-offices/{id}', [LicenceController::class ,'deleteL
 Route::delete('delete-workfield-offices/{id}', [WorkFieldsController::class ,'deleteWorkFieldOffices']);
 Route::get('work-fields/{work_field_id}/beneficiaries', [WorkFieldsController::class ,'getWorkFieldBeneficiaries']);
 Route::get('funder-resource/{funder_resource_id}/funders', [FunderResourcesController::class ,'getFunders']);
+Route::get('office/{office_id}/depatrtments', [OfficeController::class ,'getOfficedepartments']);
 
 // change status api
 Route::post('CourseChangeStatus/{id}', [CoursesController::class, 'destroy']);
@@ -107,4 +108,5 @@ Route::get('app-licences/{licence_id}/offices', [AppLicencesController::class ,'
 Route::get('app-license/{license_id}/department', [AppLicencesController::class ,'getLicenseDepartment']);
 Route::get('app-department/{department_id}/licences', [AppDepartmentsController::class ,'getDepartmentLicences']);
 Route::get('app-funder-resource/{funder_resource_id}/funders', [AppFunderResourceController::class ,'getFunders']);
+Route::get('app-office/{office_id}/depatrtments', [AppOfficesController::class ,'getOfficedepartments']);
 
