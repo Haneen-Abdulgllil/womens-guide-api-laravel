@@ -40,7 +40,7 @@ use App\Http\Controllers\APPAPI\AppFundersController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/admin', function (Request $request) {
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     // Route::apiResource('WorkFields', WorkFieldsController::class);
     return $request->user();
 });

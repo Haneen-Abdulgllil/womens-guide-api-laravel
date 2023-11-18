@@ -26,7 +26,8 @@ class StoreContactUsRequest extends FormRequest
         return [
       
             'name'=>'required',
-            // 'emailorphone'=>'required|email|regex:/^[1-9][0-9]+/|digits:9|starts_with:77,73,71,70',
+            'emailorphone'=>'required|email|regex:/^[1-9][0-9]+/|digits:9|starts_with:77,73,71,70',
+        //    'emailorphone' => 'required|^(?:\d{10}|\w+@\w+\.\w{2,3})$',
             'message'=>'required',
         ];
     }

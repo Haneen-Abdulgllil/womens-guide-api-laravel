@@ -40,28 +40,6 @@ class AppContactUsController extends Controller
     public function store(StoreContactUsRequest $request)
     {
         //
-            // $emailorphone = Input::get('emailorphone');
-            // if(is_numeric($emailorphone)){
-            //     $validator = Validator::make(Input::all(),array(
-            //                 'emailorphone' => 'required|regex:/^[1-9][0-9]+/|digits:9|starts_with:77,73,71,70'
-            //             ));
-            // }else{
-            // $validator=Validator::make(Input::all(),array(
-            //             'emailorphone' => 'required|email'
-            //             ));
-            // }
-            // $request->validate([
-                $emailorphone = request()->input('emailorphone');
-                if (is_numeric($emailorphone)) {
-                    $validator = Validator::make(request()->all(), [
-                        'emailorphone' => 'required|regex:/^[1-9][0-9]+/|digits:9|starts_with:77,73,71,70'
-                    ]);
-                } else {
-                    $validator = Validator::make(request()->all(), [
-                        'emailorphone' => 'required|email'
-                    ]);
-                }
-            // ],
         try { 
             $new_message = new ContactUs();
             $new_message->name = $request->name;
