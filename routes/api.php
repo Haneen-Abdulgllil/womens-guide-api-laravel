@@ -40,10 +40,12 @@ use App\Http\Controllers\APPAPI\AppFundersController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::middleware('auth:sanctum')->group(function(){
+    // return $request->user();
     // Route::apiResource('WorkFields', WorkFieldsController::class);
-    return $request->user();
 });
+    
+   
 // Admin
 Route::apiResource('WorkFields', WorkFieldsController::class);//
 Route::apiResource('SubWorkFields', SubWorkFieldsController::class);//
