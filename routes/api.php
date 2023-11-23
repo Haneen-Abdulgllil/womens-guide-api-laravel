@@ -1,34 +1,40 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use App\Models\User;
 // Admin
-use App\Http\Controllers\API\WorkFieldsController;
-use App\Http\Controllers\API\SubWorkFieldsController;
-use App\Http\Controllers\API\DepartmentController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\OfficeController;
-use App\Http\Controllers\API\LicenceController;
 use App\Http\Controllers\API\CoursesController;
+use App\Http\Controllers\API\FundersController;
+use App\Http\Controllers\API\LicenceController;
+use App\Http\Controllers\API\SettingsController;
+use App\Http\Controllers\API\ContactUsController;
+use App\Http\Controllers\API\DepartmentController;
+use App\Http\Controllers\API\WorkFieldsController;
 use App\Http\Controllers\API\ConsultantsController;
 use App\Http\Controllers\API\BeneficiariesController;
-use App\Http\Controllers\API\ContactUsController;
-use App\Http\Controllers\API\SettingsController;
-use App\Http\Controllers\API\FunderResourcesController;
-use App\Http\Controllers\API\FundersController;
+use App\Http\Controllers\API\SubWorkFieldsController;
+
+
+
+// 
+use App\Http\Controllers\AUTH\AuthController;
 
 // APP
-use App\Http\Controllers\APPAPI\AppWorkFieldsController;
-use App\Http\Controllers\APPAPI\AppSubWorkFieldsController;
-use App\Http\Controllers\APPAPI\AppDepartmentsController;
+use App\Http\Controllers\APPAPI\AppCoursesController;
+use App\Http\Controllers\APPAPI\AppFundersController;
 use App\Http\Controllers\APPAPI\AppOfficesController;
 use App\Http\Controllers\APPAPI\AppLicencesController;
-use App\Http\Controllers\APPAPI\AppCoursesController;
-use App\Http\Controllers\APPAPI\AppConsultantsController;
-use App\Http\Controllers\APPAPI\AppBeneficiariesController;
-use App\Http\Controllers\APPAPI\AppContactUsController;
 use App\Http\Controllers\APPAPI\AppSettingsController;
+use App\Http\Controllers\API\FunderResourcesController;
+use App\Http\Controllers\APPAPI\AppContactUsController;
+use App\Http\Controllers\APPAPI\AppWorkFieldsController;
+use App\Http\Controllers\APPAPI\AppConsultantsController;
+use App\Http\Controllers\APPAPI\AppDepartmentsController;
+use App\Http\Controllers\APPAPI\AppBeneficiariesController;
+use App\Http\Controllers\APPAPI\AppSubWorkFieldsController;
 use App\Http\Controllers\APPAPI\AppFunderResourceController;
-use App\Http\Controllers\APPAPI\AppFundersController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -44,6 +50,19 @@ Route::middleware('auth:sanctum')->get('/admin', function (Request $request) {
     // Route::apiResource('WorkFields', WorkFieldsController::class);
     return $request->user();
 });
+
+Route::get('users',function(){
+    return User::all();
+});
+
+Route::post('/login', [AuthController::class , 'login']);
+
+Route::middleware('auth:passport')->get('/Admin', function (Request $request) {
+    Route::apiResource('WorkFields', WorkFieldsController::class);//
+});
+
+
+
 // Admin
 Route::apiResource('WorkFields', WorkFieldsController::class);//
 Route::apiResource('SubWorkFields', SubWorkFieldsController::class);//
