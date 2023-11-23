@@ -104,22 +104,38 @@ class SettingsController extends Controller
             // 
             $setting = Setting::find($id);
             $setting->project_name = $request->project_name;
-            $setting->project_logo = $ProjectLogo;
+            if ($request->hasFile('project_logo')) {
+                $setting->project_logo = $ProjectLogo;
+            }
             $setting->about_application = $request->about_application;
             $setting->application_service = $request->application_service;
             // 
+
+
             $setting->funder_name = $request->funder_name;
-            $setting->funder_logo = $FunderLogo;
+            if ($request->hasFile('funder_logo')) {
+                $setting->funder_logo = $FunderLogo;
+            }
             $setting->funder_description = $request->funder_description;
             // 
+
+
             $setting->implementing_entity_name = $request->implementing_entity_name;
-            $setting->implementing_entity_logo = $ImplementingEntityLogo;
+            if ($request->hasFile('implementing_entity_logo')) {
+                $setting->implementing_entity_logo = $ImplementingEntityLogo;
+            }
             $setting->implementing_entity_description = $request->implementing_entity_description;
             // 
+
+
             $setting->coordinating_entity_name = $request->coordinating_entity_name;
-            $setting->coordinating_entity_logo = $coordinatingEntityLogo;
+            if ($request->hasFile('coordinating_entity_logo')) {
+                $setting->coordinating_entity_logo = $coordinatingEntityLogo;
+            }
             $setting->coordinating_entity_description = $request->coordinating_entity_description;
             // 
+
+            
             $setting->email = $request->email;
             $setting->whatsapp_number = $request->whatsapp_number;
             $setting->phone_number = $request->phone_number;
