@@ -46,9 +46,8 @@ use App\Http\Controllers\APPAPI\AppFunderResourceController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/admin', function (Request $request) {
-    // Route::apiResource('WorkFields', WorkFieldsController::class);
-    return $request->user();
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return Auth::user();
 });
 
 Route::get('users',function(){
@@ -57,10 +56,44 @@ Route::get('users',function(){
 
 Route::post('/login', [AuthController::class , 'login']);
 
-Route::middleware('auth:passport')->get('/Admin', function (Request $request) {
-    Route::apiResource('WorkFields', WorkFieldsController::class);//
-});
+// Route::group(['middleware' => ['auth:api']], function() { 
+// // Admin
+//     Route::apiResource('WorkFields', WorkFieldsController::class);//
+//     Route::apiResource('SubWorkFields', SubWorkFieldsController::class);//
+//     Route::apiResource('Departments', DepartmentController::class);//
+//     Route::apiResource('Offices', OfficeController::class);//
+//     Route::apiResource('Licences', LicenceController::class);//
+//     Route::apiResource('Courses', CoursesController::class);
+//     Route::apiResource('Consultants', ConsultantsController::class);
+//     Route::apiResource('Beneficiaries', BeneficiariesController::class);
+//     Route::apiResource('ContactUs', ContactUsController::class);
+//     Route::apiResource('Settings', SettingsController::class);
+//     Route::apiResource('FunderResources', FunderResourcesController::class);
+//     Route::apiResource('Funders', FundersController::class);
 
+
+//     Route::get('work-fields/{work_field_id}/sub-work-fields', [WorkFieldsController::class, 'getSubWorkFields']);
+//     Route::get('work-fields/{work_field_id}/offices', [WorkFieldsController::class, 'getWorkFieldOffices']);
+//     Route::get('sub-work-fields/{sub_work_field_id}/work-fields', [SubWorkFieldsController::class, 'getWorkFieldName']);
+//     Route::get('offices/{office_id}/licences', [OfficeController::class ,'getOfficeLicences']);
+//     Route::get('offices/{office_id}/work-fields',  [OfficeController::class ,'getOfficeWorkFields']);
+//     Route::get('licences/{licence_id}/offices', [LicenceController::class ,'getLicenseOffices']);
+//     Route::get('license/{license_id}/department', [LicenceController::class ,'getLicenseDepartment']);
+//     Route::get('department/{department_id}/licences', [DepartmentController::class ,'getDepartmentLicences']);
+//     Route::delete('delete-licence-offices/{id}', [LicenceController::class ,'deleteLicenceOffices']);
+//     Route::delete('delete-workfield-offices/{id}', [WorkFieldsController::class ,'deleteWorkFieldOffices']);
+//     Route::get('work-fields/{work_field_id}/beneficiaries', [WorkFieldsController::class ,'getWorkFieldBeneficiaries']);
+//     Route::get('funder-resource/{funder_resource_id}/funders', [FunderResourcesController::class ,'getFunders']);
+
+//     // change status api
+//     Route::post('CourseChangeStatus/{id}', [CoursesController::class, 'destroy']);
+//     Route::post('ConsultantChangeStatus/{id}', [ConsultantsController::class, 'destroy']);
+//     Route::post('DepartmentChangeStatus/{id}', [DepartmentController::class, 'destroy']);
+//     Route::post('LicenceChangeStatus/{id}', [LicenceController::class, 'destroy']);
+//     Route::post('OfficeChangeStatus/{id}', [OfficeController::class, 'destroy']);
+//     Route::post('SubWorkFieldChangeStatus/{id}', [SubWorkFieldsController::class, 'destroy']);
+//     Route::post('WorkFieldChangeStatus/{id}', [WorkFieldsController::class, 'destroy']);
+// });
 
 
 // Admin
