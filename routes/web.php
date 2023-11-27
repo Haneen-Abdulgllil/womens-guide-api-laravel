@@ -39,7 +39,7 @@ use App\Http\Controllers\APPAPI\AppFunderResourceController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('welcome');
 });
 
