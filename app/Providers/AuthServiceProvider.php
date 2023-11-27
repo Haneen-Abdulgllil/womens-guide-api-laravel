@@ -26,8 +26,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         Passport::personalAccessTokensExpireIn(now()->addDays(7));
-        // Passport::loadKeysFrom(__DIR__.'/../secrets/oauth');
-        // Passport::routes();
 
         //
     }

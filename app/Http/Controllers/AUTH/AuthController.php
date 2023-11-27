@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\AUTH;
 
+
 use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+
+
 
 class AuthController extends Controller
 {
@@ -32,4 +35,20 @@ class AuthController extends Controller
             // 'token_expires_at' => $token->token->expires_at,
          ], 200);
     }
+
+    
+
+    public function logout(Request $request){
+        $user = Auth::user();
+        $userTokens = $user->tokens();
+    
+        foreach ($userTokens as $token) {
+            $token->delete();
+        }
+        return response(['message'=> __('message.Logged out successfully')]);
+    }
+
+
+
+
 }

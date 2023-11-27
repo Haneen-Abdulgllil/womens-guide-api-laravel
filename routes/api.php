@@ -20,6 +20,7 @@ use App\Http\Controllers\API\SubWorkFieldsController;
 
 // 
 use App\Http\Controllers\AUTH\AuthController;
+use App\Http\Controllers\AUTH\ForgotPasswordController;
 
 // APP
 use App\Http\Controllers\APPAPI\AppCoursesController;
@@ -55,6 +56,9 @@ Route::get('users',function(){
 });
 
 Route::post('/login', [AuthController::class , 'login']);
+Route::post('/logout', [AuthController::class , 'logout'])->middleware('auth:api');
+Route::post('/forgotpassword', [ForgotPasswordController::class , 'forgotPassword']);
+Route::post('/resetpassword', [ForgotPasswordController::class , 'resetPassword']);
 
 // Route::group(['middleware' => ['auth:api']], function() { 
 // // Admin

@@ -6,4 +6,5 @@ return [
     'Resource created successfully'=>'تمت عملية الاضافة بنجاح!',
     'Resource updated successfully'=>'تمت عملية التحديث بنجاح!',
     'Invalid login credential'=> 'تسجيل دخول خاطئ',
+    'Logged out successfully'=>'تم تسجيل الخروج بنجاح!!'
 ];
