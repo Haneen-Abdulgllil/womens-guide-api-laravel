@@ -13,6 +13,9 @@ class AppSubWorkFieldsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // private $lastKnownId = SubWorkField::max('id');
+
     public function index()
     {
         //
@@ -103,18 +106,65 @@ class AppSubWorkFieldsController extends Controller
     }
 
     
-    public function getWorkFieldName($subWorkFieldId)
-        {
-            try{
-                $subWorkField = SubWorkField::find($subWorkFieldId);
-                $workFieldName = $subWorkField->work_field;
+    public function getWorkFieldName($subWorkFieldId){
+        try{
+            $subWorkField = SubWorkField::find($subWorkFieldId);
+            $workFieldName = $subWorkField->work_field;
 
-                return response()->json(['workFieldName' => $workFieldName]);
-            } catch (\Throwable $th) {
-                return response()->json([
-                    'message' =>  __('message.The operation failed, please try again'),
-                    'error' => $th->getMessage(),
-                ], 500);
-            }
+            return response()->json(['workFieldName' => $workFieldName]);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' =>  __('message.The operation failed, please try again'),
+                'error' => $th->getMessage(),
+            ], 500);
         }
+    }
+
+    public function checkAdded(){
+        try {
+            $true = 1;
+            $false = 0;
+            $lastKnownCreatedAt = SubWorkField::max('created_at');
+    
+            // Use diff to compare timestamps more accurately
+            $difference = \Carbon\Carbon::now()->diff($lastKnownCreatedAt);
+    
+            // Check if the difference is within one minute
+            if ($difference->i === 0 && $difference->s <= 60) {
+                return $true;
+            } else {
+                return $false;
+            }
+    
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => __('message.The operation failed, please try again'),
+                'error' => $th->getMessage(),
+            ], 500);
+        }
+    }
+
+    public function checkUpdated(){
+        try {
+            $true = 1;
+            $false = 0;
+            $lastKnownCreatedAt = SubWorkField::max('updated_at');
+    
+            // Use diff to compare timestamps more accurately
+            $difference = \Carbon\Carbon::now()->diff($lastKnownCreatedAt);
+    
+            // Check if the difference is within one minute
+            if ($difference->i === 0 && $difference->s <= 60) {
+                return $true;
+            } else {
+                return $false;
+            }
+    
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => __('message.The operation failed, please try again'),
+                'error' => $th->getMessage(),
+            ], 500);
+        }
+    }
 }

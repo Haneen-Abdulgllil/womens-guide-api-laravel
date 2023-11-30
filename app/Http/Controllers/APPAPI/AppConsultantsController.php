@@ -101,4 +101,52 @@ class AppConsultantsController extends Controller
     {
         //
     }
+
+    public function checkAdded(){
+        try {
+            $true = 1;
+            $false = 0;
+            $lastKnownCreatedAt = Consultant::max('created_at');
+    
+            // Use diff to compare timestamps more accurately
+            $difference = \Carbon\Carbon::now()->diff($lastKnownCreatedAt);
+    
+            // Check if the difference is within one minute
+            if ($difference->i === 0 && $difference->s <= 60) {
+                return $true;
+            } else {
+                return $false;
+            }
+    
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => __('message.The operation failed, please try again'),
+                'error' => $th->getMessage(),
+            ], 500);
+        }
+    }
+
+    public function checkUpdated(){
+        try {
+            $true = 1;
+            $false = 0;
+            $lastKnownCreatedAt = Consultant::max('updated_at');
+    
+            // Use diff to compare timestamps more accurately
+            $difference = \Carbon\Carbon::now()->diff($lastKnownCreatedAt);
+    
+            // Check if the difference is within one minute
+            if ($difference->i === 0 && $difference->s <= 60) {
+                return $true;
+            } else {
+                return $false;
+            }
+    
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => __('message.The operation failed, please try again'),
+                'error' => $th->getMessage(),
+            ], 500);
+        }
+    }
 }

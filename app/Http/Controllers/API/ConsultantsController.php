@@ -161,4 +161,5 @@ class ConsultantsController extends Controller
             ], 500);
         }
     }
+
 }

@@ -172,3 +172,26 @@ Route::get('app-department/{department_id}/licences', [AppDepartmentsController:
 Route::get('app-funder-resource/{funder_resource_id}/funders', [AppFunderResourceController::class ,'getFunders']);
 Route::get('app-office/{office_id}/depatrtments', [AppOfficesController::class ,'getOfficedepartments']);
 
+//check created new records AppApi
+Route::get('check-new-WorkField', [AppWorkFieldsController::class, 'checkAdded']);
+Route::get('check-new-SubWorkField', [AppSubWorkFieldsController::class, 'checkAdded']);
+Route::get('check-new-Department', [AppDepartmentsController::class, 'checkAdded']);
+Route::get('check-new-Office', [AppOfficesController::class, 'checkAdded']);
+Route::get('check-new-Licence', [AppLicencesController::class, 'checkAdded']);
+Route::get('check-new-Course', [AppCoursesController::class, 'checkAdded']);
+Route::get('check-new-Consultant', [AppConsultantsController::class, 'checkAdded']);
+Route::get('check-new-FunderResource', [AppFunderResourceController::class, 'checkAdded']);
+Route::get('check-new-Funder', [AppFundersController::class, 'checkAdded']);
+
+
+//check update records AppApi
+Route::get('check-update-WorkField', [AppWorkFieldsController::class, 'checkUpdated']);
+Route::get('check-update-SubWorkField', [AppSubWorkFieldsController::class, 'checkUpdated']);
+Route::get('check-update-Department', [AppDepartmentsController::class, 'checkUpdated']);
+Route::get('check-update-Office', [AppOfficesController::class, 'checkUpdated']);
+Route::get('check-update-Licence', [AppLicencesController::class, 'checkUpdated']);
+Route::get('check-update-Course', [AppCoursesController::class, 'checkUpdated']);
+Route::get('check-update-Consultant', [AppConsultantsController::class, 'checkUpdated']);
+Route::get('check-update-FunderResource', [AppFunderResourceController::class, 'checkUpdated']);
+Route::get('check-update-Funder', [AppFundersController::class, 'checkUpdated']);
+Route::get('check-update-Setting', [AppSettingsController::class, 'checkUpdated']);

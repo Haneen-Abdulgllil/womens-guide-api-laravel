@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\APPAPI;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Carbon\Carbon;
 use App\Models\Department;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AppDepartmentsController extends Controller
 {
@@ -108,6 +109,81 @@ class AppDepartmentsController extends Controller
             $department_licences = $department->licences;
 
             return response()->json($department_licences);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => __('message.The operation failed, please try again'),
+                'error' => $th->getMessage(),
+            ], 500);
+        }
+    }
+
+
+
+    public function checkAdded(){
+        try {
+            $true = 1;
+            $false = 0;
+            $lastKnownCreatedAt = Department::max('created_at');
+    
+            // Use diff to compare timestamps more accurately
+            $difference = \Carbon\Carbon::now()->diff($lastKnownCreatedAt);
+    
+            // Check if the difference is within one minute
+            if ($difference->i === 0 && $difference->s <= 60) {
+                return $true;
+            } else {
+                return $false;
+            }
+    
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' => __('message.The operation failed, please try again'),
+                'error' => $th->getMessage(),
+            ], 500);
+        }
+    }
+    
+
+    // public function checkAdded(){
+    //     try {
+    //         $true = 1;
+    //         $false = 0;
+    
+    //         // Get the count of records created within the last minute
+    //         $recordCount = Department::where('created_at', '>', \Carbon\Carbon::now()->subMinutes(1))->count();
+    
+    //         // Check if there are new records
+    //         if ($recordCount > 0) {
+    //             return $true;
+    //         } else {
+    //             return $false;
+    //         }
+    
+    //     } catch (\Throwable $th) {
+    //         return response()->json([
+    //             'message' => __('message.The operation failed, please try again'),
+    //             'error' => $th->getMessage(),
+    //         ], 500);
+    //     }
+    // }
+    
+
+    public function checkUpdated(){
+        try {
+            $true = 1;
+            $false = 0;
+            $lastKnownCreatedAt = Department::max('updated_at');
+    
+            // Use diff to compare timestamps more accurately
+            $difference = \Carbon\Carbon::now()->diff($lastKnownCreatedAt);
+    
+            // Check if the difference is within one minute
+            if ($difference->i === 0 && $difference->s <= 60) {
+                return $true;
+            } else {
+                return $false;
+            }
+    
         } catch (\Throwable $th) {
             return response()->json([
                 'message' => __('message.The operation failed, please try again'),

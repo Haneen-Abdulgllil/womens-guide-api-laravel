@@ -23,16 +23,19 @@ class AuthController extends Controller
          * @var User $user
          */
 
-        $user = Auth::user();
-        $token = $user->createToken($user->name);
+         $user = Auth::user();
+         $token = $user->createToken('token');
+         
+         // Access the plain-text token
+         $accessToken = $token->accessToken;
+         
          return response([
-            'id' => $user->id,
-            'name' => $user->name,
-            'email' => $user->email,
-            'created_at' => $user->created_at,
-            'updated_at' => $user->updated_at,
-            'token' => $token->accessToken,
-            // 'token_expires_at' => $token->token->expires_at,
+             'id' => $user->id,
+             'name' => $user->name,
+             'email' => $user->email,
+             'created_at' => $user->created_at,
+             'updated_at' => $user->updated_at,
+             'token' => $accessToken,
          ], 200);
     }
 
