@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\PhoneOrEmail;
 
 class StoreContactUsRequest extends FormRequest
 {
@@ -26,8 +27,8 @@ class StoreContactUsRequest extends FormRequest
         return [
       
             'name'=>'required',
-            'emailorphone'=>'required|email|regex:/^[1-9][0-9]+/|digits:9|starts_with:77,73,71,70',
-        //    'emailorphone' => 'required|^(?:\d{10}|\w+@\w+\.\w{2,3})$',
+            // 'emailorphone'=>'required|email|regex:/^[1-9][0-9]+/|digits:9|starts_with:77,73,71,70',
+            'emailorphone'=> ['required', new PhoneOrEmail],
             'message'=>'required',
         ];
     }
