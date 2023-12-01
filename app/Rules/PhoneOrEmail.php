@@ -38,6 +38,6 @@ class PhoneOrEmail implements Rule
      */
     public function message()
     {
-        return 'The :attribute must be a valid phone number or email address.';
+        return __('message.attribute must be a valid phone number or email address');
     }
 }
