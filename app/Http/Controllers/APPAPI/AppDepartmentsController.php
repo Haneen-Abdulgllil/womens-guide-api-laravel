@@ -6,9 +6,14 @@ use Carbon\Carbon;
 use App\Models\Department;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use App\Http\Traits\checkNewOrUpdatedRecordTraits;
 
 class AppDepartmentsController extends Controller
 {
+
+    use checkNewOrUpdatedRecordTraits; 
+
     /**
      * Display a listing of the resource.
      *
@@ -191,4 +196,18 @@ class AppDepartmentsController extends Controller
             ], 500);
         }
     }
+
+  
+
+ 
+
+    public function check()
+    {
+        $result = $this->checkNewOrUpdatedRecord(Department::class);
+
+        // Use $result as needed, it will be 1 if a new record or update occurred, 0 otherwise
+        // Example: return a response
+        return response()->json(['result' => $result]);
+    }
+
 }

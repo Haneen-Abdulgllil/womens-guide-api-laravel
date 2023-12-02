@@ -19,51 +19,66 @@ class ForgotPasswordController extends Controller
 {
     //
     public function forgotPassword(ForgotPasswordRequest $request){
-        $email = $request->email;
-        if(User::where ('email',$email)->doesntExist()){
-            return response(['message'=> __('message.Email does not exist')], 200);
-        }
-        $token = Str::random(64);
+        try{
+            $email = $request->email;
+            if(User::where ('email',$email)->doesntExist()){
+                return response(['message'=> __('message.Email does not exist')], 200);
+            }
+            $token = Str::random(64);
 
-        DB::table('password_resets')->insert([
-            'email' => $email, 
-            'token' => $token, 
-            'created_at' => Carbon::now()
-        ]);
+            DB::table('password_resets')->insert([
+                'email' => $email, 
+                'token' => $token, 
+                'created_at' => Carbon::now()
+            ]);
 
-        Mail::send('mail.forgot_password', ['token'=>$token], function($message) use($email){
-            $message->to($email);
-            $message->subject('Reset Password');
-            $message->from('guide.womens@gmail.com','womens guide');
-        });
+            Mail::send('mail.forgot_password', ['token'=>$token], function($message) use($email){
+                $message->to($email);
+                $message->subject('Reset Password');
+                $message->from('info@yemenwomensguide.com','womens guide');
+            });
+            
+            return response(['message'=> __('message.Check your email')], 200);
         
-        return response(['message'=> __('message.Check your email')], 200);
-
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' =>  __('message.The operation failed, please try again'),
+                'error' => $th->getMessage(),
+            ], 500);
+        }
     }
 
     public function resetPassword(ResetPasswordRequest $request){
-        $token  = $request->token;
-        $passwordReset = DB::table('password_resets')->where('token',$token)->first();
+        try{
+            $token  = $request->token;
+            $passwordReset = DB::table('password_resets')->where('token',$token)->first();
 
-        if(!$passwordReset){
-            return response(['message'=> __('message.Token not found')], 200);
+            if(!$passwordReset){
+                return response(['message'=> __('message.Token not found')], 200);
+            }
+
+            if(!$passwordReset->created_at >= now()){
+                return response(['message'=> __('message.Token has expired')], 200);
+            }
+
+            $user = User::where('email', $passwordReset->email)->first();
+
+            if(!$user){
+                return response(['message'=> __('message.User dose not exists')], 200);
+            }
+
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            DB::table('password_resets')->where('token' , $token)->delete();
+
+            return response(['message'=> __('message.Password successfully updated')], 200);
+        } catch (\Throwable $th) {
+            return response()->json([
+                'message' =>  __('message.The operation failed, please try again'),
+                'error' => $th->getMessage(),
+            ], 500);
         }
-
-        if(!$passwordReset->created_at >= now()){
-            return response(['message'=> __('message.Token has expired')], 200);
-        }
-
-        $user = User::where('email', $passwordReset->email)->first();
-
-        if(!$user){
-            return response(['message'=> __('message.User dose not exists')], 200);
-        }
-
-        $user->password = Hash::make($request->password);
-        $user->save();
-
-        DB::table('password_resets')->where('token' , $token)->delete();
-
-        return response(['message'=> __('message.Password successfully updated')], 200);
+    
     }
 }

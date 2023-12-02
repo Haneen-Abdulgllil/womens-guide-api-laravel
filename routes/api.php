@@ -195,3 +195,5 @@ Route::get('check-update-Consultant', [AppConsultantsController::class, 'checkUp
 Route::get('check-update-FunderResource', [AppFunderResourceController::class, 'checkUpdated']);
 Route::get('check-update-Funder', [AppFundersController::class, 'checkUpdated']);
 Route::get('check-update-Setting', [AppSettingsController::class, 'checkUpdated']);
+
+Route::get('/check-new-or-updated-record', [AppDepartmentsController::class, 'check']);
