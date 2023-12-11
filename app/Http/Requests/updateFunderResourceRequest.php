@@ -35,7 +35,7 @@ class updateFunderResourceRequest extends FormRequest
         return [
             'name.required' =>   __('validation.required') ,
             'description.required' =>   __('validation.required') ,
-            'office_id.required' =>   __('validation.required') ,
+            // 'office_id.required' =>   __('validation.required') ,
         ];
     }
 }

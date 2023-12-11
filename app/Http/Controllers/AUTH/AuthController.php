@@ -17,7 +17,9 @@ class AuthController extends Controller
         try{
             $login = $request->only('email' , 'password');
             if(!Auth::attempt($login)){
-                return response(['message' => 'message.Invalid login credential'], 401);
+                // return response(['message'=> __('message.Invalid login credential')], 401);
+                return response(['message'=> __('تسجيل دخول خاطئ!')], 401);
+
             }
             
             /**
