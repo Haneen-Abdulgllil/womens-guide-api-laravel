@@ -160,6 +160,10 @@ return [
     'beFirst'=>'أضف تعليقك لتكون  الاول',
     'doneSend'=>'تم الارسال بنجاح ',
 
+    
+    //  wrote by haneen
+    'nullable' => 'هذا :attribute اختياري.',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

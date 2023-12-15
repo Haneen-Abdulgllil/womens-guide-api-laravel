@@ -15,7 +15,7 @@ class Office extends Model
         'address',
         'google_map',
         'required_actions',
-        'required_actions',
+        'notes',
         'website_url',
         'logo',
         'facebook_account',

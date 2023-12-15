@@ -36,7 +36,7 @@ class StoreLicenceRequest extends FormRequest
             'notes'=>'required',
             'department'=>'required',
             'offices'=>'required',
-            'status'=>'required',
+            // 'status'=>'required',
 
         ];
     }
@@ -54,7 +54,7 @@ class StoreLicenceRequest extends FormRequest
             'notes.required' =>   __('validation.required') ,
             'department.required' =>   __('validation.required') ,
             'offices.required' =>   __('validation.required') ,
-            'status.required' =>   __('validation.required') ,
+            // 'status.required' =>   __('validation.required') ,
 
         ];
     }

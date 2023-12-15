@@ -151,6 +151,8 @@ return [
     'ulid' => 'The :attribute must be a valid ULID.',
     'uuid' => 'The :attribute must be a valid UUID.',
 
+    //  wrote by haneen
+    'nullable' => 'The :attribute is optional.',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

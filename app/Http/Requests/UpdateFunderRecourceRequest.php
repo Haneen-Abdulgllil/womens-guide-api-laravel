@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreFunderResourceRequest extends FormRequest
+class UpdateFunderRecourceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,15 +27,15 @@ class StoreFunderResourceRequest extends FormRequest
             //
             'name'=>'required',
             'description'=>'required',
-
         ];
     }
 
-    public function messages(){
+    public function messages()
+    {
         return [
+            //
             'name.required' =>   __('validation.required') ,
             'description.required' =>   __('validation.required') ,
-            // 'office_id.required' =>   __('validation.required') ,
         ];
     }
 }

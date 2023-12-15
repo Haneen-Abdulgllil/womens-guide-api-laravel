@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('linkedin_account')->nullable();
             $table->string('email')->nullable();
             $table->string('phone_number');
-            $table->boolean("status")->default(1);
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
