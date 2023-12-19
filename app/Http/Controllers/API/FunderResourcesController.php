@@ -5,8 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\FunderResource;
-use App\Http\Requests\updateFunderResourceRequest;
-use App\Http\Requests\StoreFunderResourceRequest;
+use App\Http\Requests\UpdateFunderRecourceRequest;
+use App\Http\Requests\StoreFunderRecourceRequest;
 
 class FunderResourcesController extends Controller
 {
@@ -45,7 +45,7 @@ class FunderResourcesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFunderResourceRequest $request)
+    public function store(StoreFunderRecourceRequest $request)
     {
         //
         try { 
@@ -105,7 +105,7 @@ class FunderResourcesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(updateFunderResourceRequest $request, $id)
+    public function update(UpdateFunderRecourceRequest $request, $id)
     {
         //
         try { 
