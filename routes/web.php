@@ -48,31 +48,3 @@ Route::get('/{any}', function () {
     return view('index');
    })->where('any', '^(?!api).*$');
 
-   
-
-// Admin
-// Route::resource('WorkFields', AppWorkFieldsController::class);
-// Route::resource('SubWorkFields', SubWorkFieldsController::class);
-// Route::resource('Departments', DepartmentController::class);
-// Route::resource('Offices', OfficeController::class);
-// Route::resource('Licences', LicenceController::class);
-// Route::resource('Courses', CoursesController::class);
-// Route::resource('Consultants', ConsultantsController::class);
-// Route::resource('Beneficiaries', BeneficiariesController::class);
-// Route::resource('ContactUs', ContactUsController::class);
-// Route::resource('Settings', SettingsController::class);
-// Route::resource('FunderResources', FunderResourcesController::class);
-// Route::resource('Funder', FundersController::class);
-
-// App 
-
-// Route::resource('AppWorkFields', WorkFieldsController::class);
-// Route::resource('AppSubWorkFields', AppSubWorkFieldsController::class);
-// Route::resource('AppDepartments', AppDepartmentsController::class);
-// Route::resource('AppOffices', AppOfficesController::class);
-// Route::resource('AppLicences', AppLicencesController::class);
-// Route::resource('AppCourses', AppCoursesController::class);
-// Route::resource('AppConsultants', AppConsultantsController::class);
-// Route::resource('AppBeneficiaries', AppBeneficiariesController::class);
-// Route::resource('AppSettings', AppSettingsController::class);
-// Route::resource('AppFunderResources', AppFunderResourceController::class);
